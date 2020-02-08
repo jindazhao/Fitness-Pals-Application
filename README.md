@@ -39,3 +39,13 @@ Every goal that is not hit will not take away any features, but over time, the m
 will become.
 
 **Hitting goals but not actually doing it will keep the pets happy, but the user will be cheating themselves**
+
+##User Stories
+
+- As a user, I want to be able to add my goals to my fitness plan
+- As a user, I want to be able to view my progress through my pets being happy
+- As a user, I want to be able to alter my goals according to my needs
+- As a user, I want to be able to add the foods to my consumed foods list
+- As a user, I want to be able to view the intake of nutrients on my consumed foods list
+- As a user, I want to be able to add my amount of sleep to my sleep list
+- As a user, I want to be able to add the amount of exercise to my exercise list
