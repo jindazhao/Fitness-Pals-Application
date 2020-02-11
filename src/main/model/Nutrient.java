@@ -9,7 +9,7 @@ public class Nutrient {
     // EFFECTS: constructs a nutrient with a name and quantity
     public Nutrient(String nutrientname, double nutrientquant) {
         this.nutrientname = nutrientname;
-        this.nutrientquant = nutrientquant;
+        this.nutrientquant = nutrientquant; // in terms of percentage per day
 
     }
 
