@@ -71,6 +71,7 @@ public class FitnessPlan {
         return fitnessplan.size();
     }
 
+    // REQUIRES: a non empty goal list
     // MODIFIES: this
     // EFFECTS: removes the goal that has a specific date
     public void getGoalThatHasDateOf(String date) {
@@ -81,6 +82,7 @@ public class FitnessPlan {
                 fitnessplan.remove(mygoal);
 
             }
+
         }
 
 

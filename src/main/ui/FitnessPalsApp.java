@@ -5,7 +5,7 @@ import model.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-// Fitness Pals Application
+// Fitness Pals Application inspired by TellerApp https://github.students.cs.ubc.ca/CPSC210/TellerApp.git
 public class FitnessPalsApp {
     private FitnessPlan fitnessplan;
     private Goal mygoal;
@@ -20,7 +20,8 @@ public class FitnessPalsApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: processes user input
+    // EFFECTS: processes user input, inspired by TellerApp https://github.students.cs.ubc.ca/CPSC210/TellerApp.git
+    //          class: TellerApp, method: runTellerApp
     private void runFitnessPalsApp() {
         boolean keepGoing = true;
         String command = null;
@@ -44,7 +45,8 @@ public class FitnessPalsApp {
 
     }
 
-    // EFFECTS: displays menu of options to user
+    // EFFECTS: displays menu of options to user, inspired by TellerApp
+    //          https://github.students.cs.ubc.ca/CPSC210/TellerApp.git class: TellerApp, method: displayMenu()
     private void displayMenu() {
         System.out.println("\nSelect from:");
         System.out.println("\tv -> View Your Fitness Plan");
@@ -55,7 +57,8 @@ public class FitnessPalsApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: processes user command taken from fitness app
+    // EFFECTS: processes user command taken from fitness app, inspired by TellerApp
+    //          https://github.students.cs.ubc.ca/CPSC210/TellerApp.git class: TellerApp, method: processCommand()
     private void processCommand(String command) {
         if (command.equals("v")) {
             viewFitnessPlan();
@@ -102,6 +105,7 @@ public class FitnessPalsApp {
 
 
     }
+
 
     // EFFECTS: takes the goal away from the fitness plan with a given date
     private void takeAwayAGoal() {
