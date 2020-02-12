@@ -75,7 +75,7 @@ class FitnessPlanTest {
 
 
     }
-
+// tests at 100?
     @Test
     void testAddMultipleGoals() {
         myfitnessplan.updateFitnessPlanName("Lose Weight");
