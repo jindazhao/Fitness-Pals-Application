@@ -87,6 +87,9 @@ class FitnessPlanTest {
         myfitnessplan.getGoalThatHasDateOf("01/01/2020");
         assertEquals(1, myfitnessplan.getTotalNumberOfGoals());
         assertEquals("Lose More Weight and Get More Sleep\n", myfitnessplan.getGoals());
+        myfitnessplan.getGoalThatHasDateOf("03/03/2019");
+        assertEquals(1, myfitnessplan.getTotalNumberOfGoals());
+        
 
 
 
