@@ -163,7 +163,7 @@ public class FitnessPalsApp {
 
         double targetsleep = -1;
 
-        System.out.println("Please enter the amount of sleep you want the night before");
+        System.out.println("Please enter the amount of sleep you want the night before (in minutes)");
         targetsleep = input.nextDouble();
 
 
@@ -239,7 +239,7 @@ public class FitnessPalsApp {
         double exercisecalsburned = -1;
 
 
-        System.out.println("Please type in the amount of calories burned");
+        System.out.println("Please type in the amount of calories you want to burn");
         exercisecalsburned = input.nextDouble();
         System.out.println(exercisecalsburned);
 
@@ -248,7 +248,7 @@ public class FitnessPalsApp {
 
         double exercisetime = -1;
 
-        System.out.println("Please type in the duration of the exercise");
+        System.out.println("Please type in the target duration of the exercise");
         exercisetime =  input.nextDouble();
         System.out.println(exercisetime);
 
