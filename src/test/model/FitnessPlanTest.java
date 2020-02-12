@@ -65,6 +65,8 @@ class FitnessPlanTest {
         myfitnessplan.updateFitnessPlanName("Lose Weight");
         assertEquals("Lose Weight", myfitnessplan.getFitnessPlanName() );
         assertEquals(1, myfitnessplan.getTotalNumberOfGoals());
+        assertEquals("Lose Weight", myfitnessplan.getGoals());
+
 
 
 
@@ -79,8 +81,11 @@ class FitnessPlanTest {
         myfitnessplan.addGoal(mysecondgoal);
         assertEquals("Lose Weight", myfitnessplan.getFitnessPlanName());
         assertEquals(2, myfitnessplan.getTotalNumberOfGoals());
-        myfitnessplan.getGoalThatHasDateOf("01/01/2020");
+        assertEquals("Lose Weight\nLose More Weight and Get More Sleep", myfitnessplan.getGoals());
+        myfitnessplan.getGoalThatHasDateOf("01/02/2020");
         assertEquals(1, myfitnessplan.getTotalNumberOfGoals());
+        assertEquals("Lose Weight", myfitnessplan.getGoals());
+
 
 
 
