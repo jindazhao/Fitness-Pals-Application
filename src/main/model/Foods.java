@@ -28,11 +28,6 @@ public class Foods {
 
     }
 
-    // EFFECTS: returns the list of foods
-    public ArrayList<Food> getFoods() {
-        return foodlist;
-
-    }
 
 
 

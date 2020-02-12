@@ -28,11 +28,6 @@ public class Exercises {
 
     }
 
-    // EFFECTS: returns the list of exercises
-    public ArrayList<Exercise> getExercises() {
-        return exerciselist;
-
-    }
 
 
 

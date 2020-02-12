@@ -140,7 +140,7 @@ public class FitnessPalsApp {
 
         System.out.println("Please type in the name of your new goal");
         goalname = input.next();
-        System.out.println("Goal name is:" + goalname);
+        System.out.println("Goal name is:" + " " + goalname);
 
 
 
@@ -148,7 +148,7 @@ public class FitnessPalsApp {
 
         System.out.println("Please type in the date in form dd/mm/yyyy completed by");
         goaldate = input.next();
-        System.out.println("Goal is due by: " + goaldate);
+        System.out.println("Goal is due by: " + " " + goaldate);
 
 
 
@@ -183,7 +183,7 @@ public class FitnessPalsApp {
         String foodname = "";
 
 
-        System.out.println("type in description of food");
+        System.out.println("Please type in description of food");
         foodname = input.next();
         System.out.println(foodname);
 
@@ -192,7 +192,7 @@ public class FitnessPalsApp {
         double foodquant = -1;
 
 
-        System.out.println("type in the amount of food");
+        System.out.println("Please type in the amount of food");
         foodquant = input.nextDouble();
         System.out.println(foodquant);
 
@@ -201,7 +201,7 @@ public class FitnessPalsApp {
 
         double foodcal = -1;
 
-        System.out.println("type in the amount fo calories");
+        System.out.println("Please type in the amount of calories");
         foodcal =  input.nextDouble();
         System.out.println(foodcal);
 
@@ -230,7 +230,7 @@ public class FitnessPalsApp {
         String exercisename = "";
 
 
-        System.out.println("type in description of exercise");
+        System.out.println("Please type in description of exercise");
         exercisename = input.next();
         System.out.println(exercisename);
 
@@ -239,7 +239,7 @@ public class FitnessPalsApp {
         double exercisecalsburned = -1;
 
 
-        System.out.println("type in the amount of calories burned");
+        System.out.println("Please type in the amount of calories burned");
         exercisecalsburned = input.nextDouble();
         System.out.println(exercisecalsburned);
 
@@ -248,7 +248,7 @@ public class FitnessPalsApp {
 
         double exercisetime = -1;
 
-        System.out.println("type in the duration of the exercise");
+        System.out.println("Please type in the duration of the exercise");
         exercisetime =  input.nextDouble();
         System.out.println(exercisetime);
 
@@ -278,7 +278,7 @@ public class FitnessPalsApp {
         String nutrientname = "";
 
 
-        System.out.println("type in name of nutrient");
+        System.out.println("Please type in name of nutrient");
         nutrientname = input.next();
         System.out.println(nutrientname);
 
@@ -287,7 +287,7 @@ public class FitnessPalsApp {
         double nutrientquant = -1;
 
 
-        System.out.println("type in the amount of nutrients consumed in percentage of daily intake");
+        System.out.println("Please type in the amount of nutrients consumed in percentage of daily intake");
         nutrientquant = input.nextDouble();
         System.out.println(nutrientquant);
 
