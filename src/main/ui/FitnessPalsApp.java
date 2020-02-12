@@ -76,12 +76,12 @@ public class FitnessPalsApp {
     private void viewFitnessPlan() {
 
         if (fitnessplan.getGoals().equals("")) {
-            System.out.println(fitnessplan.getFitnessPlanName());
+            System.out.println("Your Fitness Plan Name is:" + " " + fitnessplan.getFitnessPlanName());
             System.out.println("No Goals added yet");
         } else {
 
-            System.out.println(fitnessplan.getFitnessPlanName());
-            System.out.println(fitnessplan.getGoals());
+            System.out.println("Your Fitness Plan Name is:" + " " + fitnessplan.getFitnessPlanName());
+            System.out.println("Your Fitness Goals:" + " " + fitnessplan.getGoals());
         }
 
 
@@ -92,7 +92,7 @@ public class FitnessPalsApp {
     // EFFECTS: changes the name of the plan
     private void updateFitnessPlanName() {
         String fitnessplanname = "";
-        System.out.println("Please input your new name");
+        System.out.println("Please input your new fitness plan name");
         fitnessplanname = input.next();
         fitnessplan.updateFitnessPlanName(fitnessplanname);
         System.out.println("Fitness Plan Name is" +  " " + fitnessplanname);

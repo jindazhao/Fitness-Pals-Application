@@ -8,7 +8,6 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ExerciseTest {
 
     Exercise crunches;
-    Exercise planks;
 
 
     @BeforeEach
