@@ -36,22 +36,53 @@ public class FitnessPlan {
 
     }
 
+    // EFFECTS: returns the list of goal names
+    public String getGoals() {
+
+        String mygoal = "";
+
+        for (Goal in : fitnessplan) {
+            int placement = fitnessplan.indexOf(in);
+            Goal mygoalname = fitnessplan.get(placement);
+            mygoal = mygoal + mygoalname.getDescription() + "\n";
+
+
+
+            placement++;
+
+
+
+
+
+        }
+
+        return mygoal;
+
+
+
+
+
+    }
+
     // EFFECTS: returns the number of goals within the plan
     public int getTotalNumberOfGoals() {
         return fitnessplan.size();
     }
 
-    // EFFECTS: returns the goal that has a specific date
-    public Goal getGoalThatHasDateOf(String date) {
+    // MODIFIES: this
+    // EFFECTS: removes the goal that has a specific date
+    public void getGoalThatHasDateOf(String date) {
         for (Goal in : fitnessplan) {
             int placement = fitnessplan.indexOf(in);
             Goal mygoal = fitnessplan.get(placement);
             if (mygoal.getDate() == date) {
-                return mygoal;
+                fitnessplan.remove(mygoal);
 
             }
         }
-        return null;
+
+
+
 
     }
 

@@ -10,7 +10,7 @@ public class Exercise {
 
 
     // EFFECTS: constructs an exercise with a description and the calories burned per minute
-    public Exercise(String exercisename, int caloriesburned, double exercisetime) {
+    public Exercise(String exercisename, double caloriesburned, double exercisetime) {
         this.exercisename = exercisename;
         this.caloriesburned = caloriesburned;
         this.exercisetime = exercisetime;

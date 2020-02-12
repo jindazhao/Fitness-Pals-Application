@@ -42,10 +42,7 @@ will become.
 
 ##User Stories
 
-- As a user, I want to be able to add my goals to my fitness plan
-
-
-- As a user, I want to be able to view how much exercise I have gotten today.
-- As a user, I want to be able to add my amount of sleep to my sleep list
-- As a user, I want to be able to add the amount of exercise to my exercise list
-- As a user, I want to be able to view the amount of sleep I had today
+- As a user, I want to be able to add my goal to my fitness plan
+- As a user, I want to be able update the name of my fitness plan
+- As a user, I want to be able to add a food item to a goal
+- As a user, I want to be able to view the name of the goals added to my fitness plan
