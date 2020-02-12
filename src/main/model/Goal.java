@@ -43,6 +43,7 @@ public class Goal {
         return date;
 
     }
+    /*
     // EFFECTS: returns exercises of the goal
 
     public ArrayList<Exercise> viewExercises() {
@@ -107,6 +108,6 @@ public class Goal {
         targetcaloriesburned = targetsleep + sleep;
 
     }
-
+*/
 
 }

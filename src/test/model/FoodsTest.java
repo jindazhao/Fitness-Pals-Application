@@ -41,7 +41,6 @@ public class FoodsTest {
         myfoods.addFood(apple);
         myfoods.addFood(banana);
         assertEquals(3, myfoods.getTotalNumberOfFoods());
-        assertEquals(myfoods, myfoods.getFoods());
 
     }
 

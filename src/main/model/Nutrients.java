@@ -27,11 +27,6 @@ public class Nutrients {
 
     }
 
-    // EFFECTS: returns the list of nutrients
-    public ArrayList<Nutrient> getNutrients() {
-        return nutrientlist;
-
-    }
 
 
 

@@ -42,8 +42,15 @@ public class NutrientsTest {
         mynutrients.addNutrient(vitaminB);
         mynutrients.addNutrient(vitaminC);
         assertEquals(2, mynutrients.getTotalNumberOfNutrients());
-        assertEquals(mynutrients, mynutrients.getNutrients());
+
 
     }
+
+
+
+
+
+
+
 
 }

@@ -38,7 +38,7 @@ public class ExercisesTest {
         myexercises.addExercise(crunches);
         myexercises.addExercise(planks);
         assertEquals(2, myexercises.getTotalNumberOfExercises());
-        assertEquals(myexercises, myexercises.getExercises());
+
 
 
 

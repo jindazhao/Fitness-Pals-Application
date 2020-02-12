@@ -11,7 +11,7 @@ public class FitnessPalsApp {
     private Goal mygoal;
     private Scanner input;
 
-
+    // EFFECTS: runs the fitness app
     public FitnessPalsApp() {
         fitnessplan = new FitnessPlan();
         runFitnessPalsApp();
@@ -19,6 +19,8 @@ public class FitnessPalsApp {
 
     }
 
+    // MODIFIES: this
+    // EFFECTS: processes user input
     private void runFitnessPalsApp() {
         boolean keepGoing = true;
         String command = null;
@@ -52,7 +54,7 @@ public class FitnessPalsApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: processes user command taken from teller app
+    // EFFECTS: processes user command taken from fitness app
     private void processCommand(String command) {
         if (command.equals("v")) {
             viewFitnessPlan();
@@ -70,7 +72,7 @@ public class FitnessPalsApp {
     }
 
 
-
+    // EFFECTS: allows user to view current fitness plan
     private void viewFitnessPlan() {
 
         if (fitnessplan.getGoals().equals("")) {
@@ -86,6 +88,8 @@ public class FitnessPalsApp {
 
     }
 
+    // MODIFIES: this
+    // EFFECTS: changes the name of the plan
     private void updateFitnessPlanName() {
         String fitnessplanname = "";
         System.out.println("Please input your new name");
@@ -97,6 +101,7 @@ public class FitnessPalsApp {
 
     }
 
+    // EFFECTS: takes the goal away from the fitness plan with a given date
     private void takeAwayAGoal() {
 
         String removedgoal = "";
@@ -116,6 +121,8 @@ public class FitnessPalsApp {
 
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds a new goal to fitness plan
     private void addGoalToFitnessPlan() {
 
 
@@ -124,6 +131,8 @@ public class FitnessPalsApp {
 
     }
 
+    // EFFECTS:  makes a new goal with goal name, date, target calorie burn, target sleep, foods consumed, exercises,
+    //          nutrition
     private Goal makeNewGoal() {
 
         String goalname = "";
@@ -164,6 +173,7 @@ public class FitnessPalsApp {
 
     }
 
+    // EFFECTS: make and add foods onto a foods list
     private Foods addFoods() {
 
         Foods myfoodlist = new Foods();
@@ -208,6 +218,7 @@ public class FitnessPalsApp {
 
     }
 
+    // EFFECTS:  makes and adds a new exercise onto an exercise list
     private Exercises addExercises() {
 
 
@@ -255,6 +266,7 @@ public class FitnessPalsApp {
 
     }
 
+    // EFFECTS:  makes and adds nutrients onto a nutrient list
     private Nutrients addNutrients() {
 
 
