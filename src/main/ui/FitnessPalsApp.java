@@ -29,6 +29,7 @@ public class FitnessPalsApp {
 
         while (keepGoing) {
             displayMenu();
+//            System.out.println("\n");
             command = input.next();
             command = command.toLowerCase();
 
@@ -91,11 +92,12 @@ public class FitnessPalsApp {
     // MODIFIES: this
     // EFFECTS: changes the name of the plan
     private void updateFitnessPlanName() {
-        String fitnessplanname = "";
+        String fitnessplanname;
+        Scanner input = new Scanner(System.in);
         System.out.println("Please input your new fitness plan name");
-        fitnessplanname = input.next();
+        fitnessplanname = input.nextLine();
         fitnessplan.updateFitnessPlanName(fitnessplanname);
-        System.out.println("Fitness Plan Name is" +  " " + fitnessplanname);
+        System.out.println("Fitness Plan Name is:" +  " " + fitnessplanname);
 
 
 
@@ -137,9 +139,12 @@ public class FitnessPalsApp {
 
         String goalname = "";
 
+        Scanner input = new Scanner(System.in);
+
+
 
         System.out.println("Please type in the name of your new goal");
-        goalname = input.next();
+        goalname = input.nextLine();
         System.out.println("Goal name is:" + " " + goalname);
 
 
@@ -147,7 +152,7 @@ public class FitnessPalsApp {
         String goaldate = "";
 
         System.out.println("Please type in the date in form dd/mm/yyyy completed by");
-        goaldate = input.next();
+        goaldate = input.nextLine();
         System.out.println("Goal is due by: " + " " + goaldate);
 
 
@@ -179,12 +184,13 @@ public class FitnessPalsApp {
         Foods myfoodlist = new Foods();
 
 
+        Scanner input = new Scanner(System.in);
 
         String foodname = "";
 
 
         System.out.println("Please type in description of food");
-        foodname = input.next();
+        foodname = input.nextLine();
         System.out.println(foodname);
 
 
@@ -221,6 +227,8 @@ public class FitnessPalsApp {
     // EFFECTS:  makes and adds a new exercise onto an exercise list
     private Exercises addExercises() {
 
+        Scanner input = new Scanner(System.in);
+
 
 
         Exercises myexerciselist = new Exercises();
@@ -231,7 +239,7 @@ public class FitnessPalsApp {
 
 
         System.out.println("Please type in description of exercise");
-        exercisename = input.next();
+        exercisename = input.nextLine();
         System.out.println(exercisename);
 
 
@@ -269,6 +277,8 @@ public class FitnessPalsApp {
     // EFFECTS:  makes and adds nutrients onto a nutrient list
     private Nutrients addNutrients() {
 
+        Scanner input = new Scanner(System.in);
+
 
         Nutrients mynutrientlist = new Nutrients();
 
@@ -279,7 +289,7 @@ public class FitnessPalsApp {
 
 
         System.out.println("Please type in name of nutrient");
-        nutrientname = input.next();
+        nutrientname = input.nextLine();
         System.out.println(nutrientname);
 
 

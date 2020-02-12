@@ -28,7 +28,7 @@ The fitness aspect of the app can contain many plans based on the user:
 These plans will be based on three aspects that will make up daily goals:
 
 - Sleep
-- Calorie and nutrient consumption
+- Food, Calorie and nutrient consumption
 - Exercise and calorie burned
 
 
@@ -44,6 +44,6 @@ will become.
 
 - As a user, I want to be able to add my goal to my fitness plan
 - As a user, I want to be able to add a name of my fitness plan and be able to view it as well
-- As a user, I want to be able to add a food item to a goal
+- As a user, I want to be able to add one food item to one of a goal
 - As a user, I want to be able to add multiple goals to my fitness plan
 - As a user, I want to be able to view the names of the goals added to my fitness plan

@@ -41,6 +41,8 @@ public class FitnessPlan {
 
         String mygoal = "";
 
+
+
         for (Goal in : fitnessplan) {
             int placement = fitnessplan.indexOf(in);
             Goal mygoalname = fitnessplan.get(placement);
