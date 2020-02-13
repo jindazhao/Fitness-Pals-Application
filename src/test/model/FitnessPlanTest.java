@@ -75,7 +75,7 @@ class FitnessPlanTest {
 
 
     }
-// tests at 100?
+
     @Test
     void testAddMultipleGoals() {
         myfitnessplan.updateFitnessPlanName("Lose Weight");
@@ -89,7 +89,7 @@ class FitnessPlanTest {
         assertEquals("Lose More Weight and Get More Sleep\n", myfitnessplan.getGoals());
         myfitnessplan.getGoalThatHasDateOf("03/03/2019");
         assertEquals(1, myfitnessplan.getTotalNumberOfGoals());
-        
+
 
 
 
