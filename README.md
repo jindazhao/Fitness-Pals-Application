@@ -44,7 +44,7 @@ will become.
 
 - As a user, I want to be able to add my goal to my fitness plan
 - As a user, I want to be able to add a name of my fitness plan and be able to view it as well
-- As a user, I want to be able to add one food item to a goal and then add the goal to the fitness plan
+- As a user, I want to be able to add an exercise to a goal and then add the goal to the fitness plan
 - As a user, I want to be able to add multiple goals to my fitness plan
 - As a user, I want to be able to view the names of the goals added to my fitness plan
 

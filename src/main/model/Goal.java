@@ -8,26 +8,18 @@ import java.util.ArrayList;
 public class Goal {
     private String description;
     private String date; // has to be in the form dd/mm/yyyy
-    private Exercises exercises;
-    private double targetcaloriesburned;
-    private Foods foods;
-    private Nutrients nutrients;
-    private double targetsleep;
+    private Exercise exercise;
 
 
 
 
-    // EFFECTS: constructs a goal with a description, exercises, calorie burn target, foods, nutrients to consume,
-    //          and sleep
-    public Goal(String description, String date, Exercises exercises, double targetcaloriesburned, Foods foods,
-                Nutrients nutrients, double targetsleep) {
+
+    // EFFECTS: constructs a goal with a description, due date, and exercise
+    public Goal(String description, String date, Exercise exercise) {
         this.description = description;
-        this.exercises = exercises;
-        this.targetcaloriesburned = targetcaloriesburned;
-        this.foods = foods;
-        this.nutrients = nutrients;
-        this.targetsleep = targetsleep;
         this.date = date;
+        this.exercise = exercise;
+
 
 
     }
@@ -43,6 +35,12 @@ public class Goal {
         return date;
 
     }
+
+    //
+    public String getGoalExerciseName() {
+        return exercise.getExerciseName();
+    }
+
     /*
     // EFFECTS: returns exercises of the goal
 
