@@ -11,16 +11,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class ReaderTest {
+
     @Test
     void testParseFitnessFile1() {
+        Reader reader = new Reader();
         try {
             FitnessPlan fitnessPlan = Reader.readFitnessPlan(new File("./data/testFitnessPlan.txt"));
             assertEquals("My Fitness Plan", fitnessPlan.getFitnessPlanName());
             assertEquals(2, fitnessPlan.getTotalNumberOfGoals());
 
-
         } catch (IOException e) {
-            fail("IOEception should not have been thrown");
+            fail("IOException should not have been thrown");
         }
     }
 

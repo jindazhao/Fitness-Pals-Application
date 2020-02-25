@@ -12,9 +12,7 @@ public class ExerciseTest {
 
     @BeforeEach
     void runBefore() {
-
         crunches = new Exercise("crunches", 100, 30);
-
     }
 
     @Test
@@ -22,10 +20,5 @@ public class ExerciseTest {
         assertEquals("crunches", crunches.getExerciseName());
         assertEquals(100, crunches.getCaloriesBurned());
         assertEquals(30, crunches.getExerciseTime());
-
-
-
     }
-
-
 }

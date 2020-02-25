@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
 // A reader that can read fitness plan data from file
 public class Reader {
     public static final String DELIMITER = ";";
@@ -21,14 +20,12 @@ public class Reader {
     public static FitnessPlan readFitnessPlan(File file) throws IOException {
         List<String> fileContent = readFile(file);
         return parseContent(fileContent);
-
     }
 
     // EFFECTS: returns content of file as a list of strings, each string
     // conatining the content of one row of file
     private static List<String> readFile(File file) throws IOException {
         return Files.readAllLines(file.toPath());
-
     }
 
     // EFFECTS: returns a list of fitness plans parsed from list of Strings
@@ -41,9 +38,7 @@ public class Reader {
         for (String line : fileContent) {
             ArrayList<String> lineComponents = splitString(line);
             fitnessPlan.addGoal(parseFitnessPlan(lineComponents));
-
         }
-
         return fitnessPlan;
     }
 
@@ -51,7 +46,6 @@ public class Reader {
     private static ArrayList<String> splitString(String line) {
         String[] splits = line.split(DELIMITER);
         return new ArrayList<>(Arrays.asList(splits));
-
     }
 
     // REQUIRES: components has size 2 where element 0 represents the
@@ -63,9 +57,6 @@ public class Reader {
         Exercise exercise = new Exercise(components.get(2), Double.parseDouble(components.get(3)),
                 Double.parseDouble(components.get(4)));
         Goal goal = new Goal(components.get(0), components.get(1), exercise);
-
         return goal;
-
     }
-
 }

@@ -4,8 +4,6 @@ import model.*;
 import persistence.Reader;
 import persistence.Writer;
 
-
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +14,6 @@ public class FitnessPalsApp {
     private static final String FITNESSPLANS_File = "./data/fitnessplan.txt";
     private FitnessPlan fitnessPlan;
     private String fitnessPlanName;
-
 
     private Goal myGoal;
     private Scanner input;
@@ -34,9 +31,7 @@ public class FitnessPalsApp {
         boolean keepGoing = true;
         String command = null;
         input = new Scanner(System.in);
-
         loadFitnessPlans();
-
 
         while (keepGoing) {
             displayMenu();
@@ -50,9 +45,7 @@ public class FitnessPalsApp {
                 processCommand(command);
             }
         }
-
         System.out.println("\nGoodbye!");
-
     }
 
     // MODIFIES: this
@@ -63,10 +56,7 @@ public class FitnessPalsApp {
             fitnessPlan  = Reader.readFitnessPlan(new File(FITNESSPLANS_File));
         } catch (IOException e) {
             fitnessPlan = new FitnessPlan();
-
         }
-
-
     }
 
     // EFFECTS: saves state of the fitness plan with the fitness plan name and list of goals
@@ -81,7 +71,6 @@ public class FitnessPalsApp {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-
     }
 
 
@@ -124,29 +113,28 @@ public class FitnessPalsApp {
             System.out.println("Your Fitness Plan Name is:" + " " + fitnessPlan.getFitnessPlanName());
             System.out.println("No Goals added yet");
         } else {
-
             System.out.println("Your Fitness Plan Name is:" + " " + fitnessPlan.getFitnessPlanName());
             System.out.println("Your Fitness Goals:" + " " + fitnessPlan.getGoals());
         }
-
     }
 
     // MODIFIES: this
     // EFFECTS: changes the name of the plan
     private void updateFitnessPlanName() {
-
         Scanner input = new Scanner(System.in);
-        System.out.println("Please input your new fitness plan name");
-        fitnessPlanName = input.nextLine();
-        fitnessPlan.updateFitnessPlanName(fitnessPlanName);
-        System.out.println("Fitness Plan Name is:" +  " " + fitnessPlanName);
 
+        System.out.println("Please input your new fitness plan name");
+
+        fitnessPlanName = input.nextLine();
+
+        fitnessPlan.updateFitnessPlanName(fitnessPlanName);
+
+        System.out.println("Fitness Plan Name is:" +  " " + fitnessPlanName);
     }
 
 
     // EFFECTS: takes the goal away from the fitness plan with a given date
     private void takeAwayAGoal() {
-
         String removedgoal = "";
 
         System.out.println("What is the date of the goal you would like to remove from your fitness plan?");
@@ -155,84 +143,60 @@ public class FitnessPalsApp {
         fitnessPlan.getGoalThatHasDateOf(removedgoal);
 
         System.out.println("Goal from" + " " + removedgoal + " " + "has been removed from your fitness plan!");
-
     }
 
     // MODIFIES: this
     // EFFECTS: adds a new goal to fitness plan
     private void addGoalToFitnessPlan() {
-
-
-
-
-
         fitnessPlan.addGoal(makeNewGoal());
-
-
-
     }
 
     // EFFECTS:  makes a new goal with goal name, date, and one exercise
     private Goal makeNewGoal() {
-
         String goalname = "";
-
         Scanner input = new Scanner(System.in);
 
         System.out.println("Please type in the name of your new goal");
         goalname = input.nextLine();
-        System.out.println("Goal name is:" + " " + goalname);
 
+        System.out.println("Goal name is:" + " " + goalname);
         String goaldate = "";
 
         System.out.println("Please type in the date in form dd/mm/yyyy completed by");
         goaldate = input.nextLine();
+
         System.out.println("Goal is due by: " + " " + goaldate);
 
         myGoal = new Goal(goalname, goaldate, addExercises());
 
-
-
-
         return myGoal;
-
     }
 
 
     // EFFECTS:  makes and adds a new exercise onto an exercise list
     private Exercise addExercises() {
-
         Scanner input = new Scanner(System.in);
-
         String exercisename = "";
 
         System.out.println("Please type in description of exercise");
         exercisename = input.nextLine();
-        System.out.println(exercisename);
 
+        System.out.println(exercisename);
         double exercisecalsburned = -1;
 
         System.out.println("Please type in the amount of calories you want to burn");
         exercisecalsburned = input.nextDouble();
-        System.out.println(exercisecalsburned);
 
+        System.out.println(exercisecalsburned);
         double exercisetime = -1;
 
         System.out.println("Please type in the target duration of the exercise");
         exercisetime =  input.nextDouble();
+
         System.out.println(exercisetime);
 
         Exercise myexercise = new Exercise(exercisename, exercisecalsburned, exercisetime);
 
         return myexercise;
-
-
-
-
-
     }
-
-
-
-
 }

@@ -7,27 +7,20 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GoalTest {
 
-
     Goal mysecondgoal;
     Goal myfirstgoal;
 
     Exercise crunches;
     Exercise planks;
 
-
-
     @BeforeEach
     void runBefore() {
-
         crunches = new Exercise("Crunches", 100, 10);
         planks = new Exercise("Planks", 100, 10);
 
         myfirstgoal = new Goal("Lose Weight", "01/01/2020", crunches);
         mysecondgoal = new Goal("Lose More Weight and Get More Sleep", "01/02/2020", planks);
-
     }
-
-
 
     @Test
     void testGetters() {
@@ -36,12 +29,5 @@ public class GoalTest {
         assertEquals("Crunches", myfirstgoal.getGoalExerciseName());
         assertEquals(100, myfirstgoal.getExerciseCalories());
         assertEquals(10, myfirstgoal.getExerciseDuration());
-
-
     }
-
-
-
-
-
 }

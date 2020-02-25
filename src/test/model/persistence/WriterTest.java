@@ -25,8 +25,6 @@ public class WriterTest {
     private Exercise exercise;
 
 
-
-
     @BeforeEach
     void runBefore() throws FileNotFoundException, UnsupportedEncodingException {
         testWriter = new Writer(new File(TEST_FILE));
@@ -35,10 +33,7 @@ public class WriterTest {
         goal = new Goal("Lose Weight", "00/00/0000", exercise);
         exercise = new Exercise("Planks", 100, 100);
         goal2 = new Goal("Lose More Weight", "00/00/0000", exercise);
-
-
     }
-
 
     @Test
     void testWriteFitnessPlan() {
@@ -46,8 +41,6 @@ public class WriterTest {
         fitnessPlan.addGoal(goal);
         fitnessPlan.addGoal(goal2);
         fitnessPlan.updateFitnessPlanName("My Fitness Plan");
-
-
 
         // save fitness name and list of goals
         testWriter.write(fitnessPlan);
@@ -58,15 +51,8 @@ public class WriterTest {
             FitnessPlan fitnessPlan = Reader.readFitnessPlan(new File(TEST_FILE));
             assertEquals("My Fitness Plan", fitnessPlan.getFitnessPlanName());
             assertEquals(2, fitnessPlan.getTotalNumberOfGoals());
-
-
-
         } catch (IOException e) {
             fail("IOException should not have been thrown");
         }
-
-
     }
-
-
 }

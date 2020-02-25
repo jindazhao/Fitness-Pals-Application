@@ -15,66 +15,37 @@ public class FitnessPlan implements Saveable {
     public FitnessPlan() {
         fitnessPlanName = null;
         fitnessPlanGoals = new ArrayList<Goal>();
-
-
-
-
-
     }
-
-
 
     // MODIFIES: this
     // EFFECTS: adds a goal unto the fitness plan
     public void addGoal(Goal goal) {
         fitnessPlanGoals.add(goal);
-
     }
-
 
     // EFFECTS: returns the name of the fitness plan
     public String getFitnessPlanName() {
         return fitnessPlanName;
-
     }
 
     // MODIFIES: this
     // EFFECTS: changes the name of the fitness plan
     public void updateFitnessPlanName(String newname) {
         fitnessPlanName = newname;
-
     }
 
     // EFFECTS: returns the list of goal names
     public String getGoals() {
-
         String mygoal = "";
-
-
-
         for (Goal in : fitnessPlanGoals) {
             int placement = fitnessPlanGoals.indexOf(in);
             Goal mygoalname = fitnessPlanGoals.get(placement);
             mygoal = mygoal + mygoalname.getDescription() + ":" + " " + mygoalname.getDate()
                     + " " + mygoalname.getGoalExerciseName()
                     + " " + mygoalname.getExerciseCalories() + " " + mygoalname.getExerciseDuration() + "\n";
-
-
-
             placement++;
-
-
-
-
-
         }
-
         return mygoal;
-
-
-
-
-
     }
 
     // EFFECTS: returns the number of goals within the plan
@@ -91,16 +62,12 @@ public class FitnessPlan implements Saveable {
             Goal mygoal = fitnessPlanGoals.get(placement);
             if (mygoal.getDate() == date) {
                 fitnessPlanGoals.remove(mygoal);
-
             }
-
         }
-
-
-
-
     }
 
+    // EFFECTS: Prints all the components of the plan to a txt file
+    // inspired by TellerApp https://github.students.cs.ubc.ca/CPSC210/TellerApp.git
     @Override
     public void save(PrintWriter printWriter) {
         printWriter.print(fitnessPlanName);
@@ -117,10 +84,6 @@ public class FitnessPlan implements Saveable {
             printWriter.print(";");
             printWriter.print(i.getExerciseDuration());
             printWriter.print("\n");
-
         }
-
     }
-
-
 }
