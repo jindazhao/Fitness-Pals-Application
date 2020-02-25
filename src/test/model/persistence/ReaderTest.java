@@ -14,7 +14,7 @@ public class ReaderTest {
     @Test
     void testParseFitnessFile1() {
         try {
-            FitnessPlan fitnessPlan = Reader.readFitnessPlan(new File("./data/testFitnessPlanFile1.txt"));
+            FitnessPlan fitnessPlan = Reader.readFitnessPlan(new File("./data/testFitnessPlan.txt"));
             assertEquals("My Fitness Plan", fitnessPlan.getFitnessPlanName());
             assertEquals(2, fitnessPlan.getTotalNumberOfGoals());
 
