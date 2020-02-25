@@ -16,7 +16,7 @@ public class ReaderTest {
         try {
             FitnessPlan fitnessPlan = Reader.readFitnessPlan(new File("./data/testFitnessPlanFile1.txt"));
             assertEquals("My Fitness Plan", fitnessPlan.getFitnessPlanName());
-            assertEquals(1, fitnessPlan.getTotalNumberOfGoals());
+            assertEquals(2, fitnessPlan.getTotalNumberOfGoals());
 
 
         } catch (IOException e) {

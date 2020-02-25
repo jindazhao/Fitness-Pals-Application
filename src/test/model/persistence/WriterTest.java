@@ -21,6 +21,7 @@ public class WriterTest {
     private Writer testWriter;
     private FitnessPlan fitnessPlan;
     private Goal goal;
+    private Goal goal2;
     private Exercise exercise;
 
 
@@ -32,6 +33,8 @@ public class WriterTest {
         fitnessPlan = new FitnessPlan();
         goal = new Goal("Lose Weight", "00/00/0000", exercise);
         exercise = new Exercise("Planks", 100, 100);
+        goal2 = new Goal("Lose More Weight", "00/00/0000", exercise);
+
 
     }
 
@@ -40,6 +43,7 @@ public class WriterTest {
     void testWriteFitnessPlan() {
 
         fitnessPlan.addGoal(goal);
+        fitnessPlan.addGoal(goal2);
         fitnessPlan.updateFitnessPlanName("My Fitness Plan");
 
         // save fitness name and list of goals
@@ -49,7 +53,7 @@ public class WriterTest {
         try {
             FitnessPlan fitnessPlan = Reader.readFitnessPlan(new File(TEST_FILE));
             assertEquals("My Fitness Plan", fitnessPlan.getFitnessPlanName());
-            assertEquals(1, fitnessPlan.getTotalNumberOfGoals());
+            assertEquals(2, fitnessPlan.getTotalNumberOfGoals());
 
 
         } catch (IOException e) {
