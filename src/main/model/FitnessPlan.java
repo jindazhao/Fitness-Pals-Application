@@ -55,7 +55,9 @@ public class FitnessPlan implements Saveable {
         for (Goal in : fitnessPlanGoals) {
             int placement = fitnessPlanGoals.indexOf(in);
             Goal mygoalname = fitnessPlanGoals.get(placement);
-            mygoal = mygoal + mygoalname.getDescription() + "\n";
+            mygoal = mygoal + mygoalname.getDescription() + ":" + " " + mygoalname.getDate()
+                    + " " + mygoalname.getGoalExerciseName()
+                    + " " + mygoalname.getExerciseCalories() + " " + mygoalname.getExerciseDuration() + "\n";
 
 
 
@@ -106,13 +108,13 @@ public class FitnessPlan implements Saveable {
 
         for (Goal i : fitnessPlanGoals) {
             printWriter.print(i.getDescription());
-            printWriter.print("; ");
+            printWriter.print(";");
             printWriter.print(i.getDate());
-            printWriter.print("; ");
+            printWriter.print(";");
             printWriter.print(i.getGoalExerciseName());
-            printWriter.print("; ");
+            printWriter.print(";");
             printWriter.print(i.getExerciseCalories());
-            printWriter.print("; ");
+            printWriter.print(";");
             printWriter.print(i.getExerciseDuration());
             printWriter.print("\n");
 

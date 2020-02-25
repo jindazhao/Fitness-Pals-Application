@@ -10,10 +10,6 @@ public class Goal {
     private String date; // has to be in the form dd/mm/yyyy
     private Exercise exercise;
 
-
-
-
-
     // EFFECTS: constructs a goal with a description, due date, and exercise
     public Goal(String description, String date, Exercise exercise) {
         this.description = description;
@@ -36,15 +32,17 @@ public class Goal {
 
     }
 
-    //
+    // EFFECTS: returns the exercise name as a string
     public String getGoalExerciseName() {
         return exercise.getExerciseName();
     }
 
+    // EFFECTS: returns the number of calories burned as a double
     public Double getExerciseCalories() {
         return exercise.getCaloriesBurned();
     }
 
+    // EFFECTS: returns the duration as a double
     public Double getExerciseDuration() {
         return exercise.getExerciseTime();
     }

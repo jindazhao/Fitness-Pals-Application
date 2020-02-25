@@ -20,7 +20,7 @@ public class ReaderTest {
 
 
         } catch (IOException e) {
-            fail("IOEception should have been thrown");
+            fail("IOEception should not have been thrown");
         }
     }
 

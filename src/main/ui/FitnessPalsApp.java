@@ -64,12 +64,6 @@ public class FitnessPalsApp {
         } catch (IOException e) {
             fitnessPlan = new FitnessPlan();
 
-
-
-
-
-
-
         }
 
 
@@ -87,8 +81,6 @@ public class FitnessPalsApp {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-
-
 
     }
 
