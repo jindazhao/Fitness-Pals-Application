@@ -41,6 +41,14 @@ public class Goal {
         return exercise.getExerciseName();
     }
 
+    public Double getExerciseCalories() {
+        return exercise.getCaloriesBurned();
+    }
+
+    public Double getExerciseDuration() {
+        return exercise.getExerciseTime();
+    }
+
     /*
     // EFFECTS: returns exercises of the goal
 

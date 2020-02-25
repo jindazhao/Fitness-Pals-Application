@@ -8,13 +8,13 @@ import java.util.ArrayList;
 
 // Represents a fitness plan with a description and a list of goals
 public class FitnessPlan implements Saveable {
-    private String fitnessplanname;
-    ArrayList<Goal> fitnessplangoals;
+    private String fitnessPlanName;
+    private ArrayList<Goal> fitnessPlanGoals;
 
     // EFFECTS: constructs an empty fitness plan
     public FitnessPlan() {
-        fitnessplanname = null;
-        fitnessplangoals = new ArrayList<Goal>();
+        fitnessPlanName = null;
+        fitnessPlanGoals = new ArrayList<Goal>();
 
 
 
@@ -22,24 +22,26 @@ public class FitnessPlan implements Saveable {
 
     }
 
+
+
     // MODIFIES: this
     // EFFECTS: adds a goal unto the fitness plan
     public void addGoal(Goal goal) {
-        fitnessplangoals.add(goal);
+        fitnessPlanGoals.add(goal);
 
     }
 
 
     // EFFECTS: returns the name of the fitness plan
     public String getFitnessPlanName() {
-        return fitnessplanname;
+        return fitnessPlanName;
 
     }
 
     // MODIFIES: this
     // EFFECTS: changes the name of the fitness plan
     public void updateFitnessPlanName(String newname) {
-        fitnessplanname = newname;
+        fitnessPlanName = newname;
 
     }
 
@@ -50,9 +52,9 @@ public class FitnessPlan implements Saveable {
 
 
 
-        for (Goal in : fitnessplangoals) {
-            int placement = fitnessplangoals.indexOf(in);
-            Goal mygoalname = fitnessplangoals.get(placement);
+        for (Goal in : fitnessPlanGoals) {
+            int placement = fitnessPlanGoals.indexOf(in);
+            Goal mygoalname = fitnessPlanGoals.get(placement);
             mygoal = mygoal + mygoalname.getDescription() + "\n";
 
 
@@ -75,18 +77,18 @@ public class FitnessPlan implements Saveable {
 
     // EFFECTS: returns the number of goals within the plan
     public int getTotalNumberOfGoals() {
-        return fitnessplangoals.size();
+        return fitnessPlanGoals.size();
     }
 
     // REQUIRES: a non empty goal list
     // MODIFIES: this
     // EFFECTS: removes the goal that has a specific date
     public void getGoalThatHasDateOf(String date) {
-        for (Goal in : fitnessplangoals) {
-            int placement = fitnessplangoals.indexOf(in);
-            Goal mygoal = fitnessplangoals.get(placement);
+        for (Goal in : fitnessPlanGoals) {
+            int placement = fitnessPlanGoals.indexOf(in);
+            Goal mygoal = fitnessPlanGoals.get(placement);
             if (mygoal.getDate() == date) {
-                fitnessplangoals.remove(mygoal);
+                fitnessPlanGoals.remove(mygoal);
 
             }
 
@@ -99,8 +101,24 @@ public class FitnessPlan implements Saveable {
 
     @Override
     public void save(PrintWriter printWriter) {
-        printWriter.print(fitnessplanname);
-        printWriter.print(fitnessplangoals);
+        printWriter.print(fitnessPlanName);
+        printWriter.print("\n");
+
+        for (Goal i : fitnessPlanGoals) {
+            printWriter.print(i.getDescription());
+            printWriter.print("; ");
+            printWriter.print(i.getDate());
+            printWriter.print("; ");
+            printWriter.print(i.getGoalExerciseName());
+            printWriter.print("; ");
+            printWriter.print(i.getExerciseCalories());
+            printWriter.print("; ");
+            printWriter.print(i.getExerciseDuration());
+            printWriter.print("\n");
+
+        }
 
     }
+
+
 }

@@ -10,4 +10,5 @@ public interface Saveable {
     // EFFECTS: writes the saveable to printwriter
     void save(PrintWriter printWriter);
 
+
 }

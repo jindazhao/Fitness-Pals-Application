@@ -33,6 +33,9 @@ public class GoalTest {
     void testGetters() {
         assertEquals("Lose Weight", myfirstgoal.getDescription());
         assertEquals("01/01/2020", myfirstgoal.getDate());
+        assertEquals("Crunches", myfirstgoal.getGoalExerciseName());
+        assertEquals(100, myfirstgoal.getExerciseCalories());
+        assertEquals(10, myfirstgoal.getExerciseDuration());
 
 
     }

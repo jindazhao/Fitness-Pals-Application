@@ -13,12 +13,12 @@ import java.util.List;
 
 // A reader that can read fitness plan data from file
 public class Reader {
-    public static final String DELIMITER = ",";
+    public static final String DELIMITER = ";";
     public static final Goal GOAL = null;
 
     // EFFECTS: returns a list of accounts parsed from file; throws
     // IOException if an exception is raised when opening / reading from file
-    public static List<FitnessPlan> readFitnessPlan(File file) throws IOException {
+    public static FitnessPlan readFitnessPlan(File file) throws IOException {
         List<String> fileContent = readFile(file);
         return parseContent(fileContent);
 
@@ -33,16 +33,18 @@ public class Reader {
 
     // EFFECTS: returns a list of fitness plans parsed from list of Strings
     // where each string contains data for one fitness plan
-    private static List<FitnessPlan> parseContent(List<String> fileContent) {
-        List<FitnessPlan> fitnessplans = new ArrayList<>();
+    private static FitnessPlan parseContent(List<String> fileContent) {
+        FitnessPlan fitnessPlan = new FitnessPlan();
+        fitnessPlan.updateFitnessPlanName(fileContent.get(0));
+        fileContent.remove(0);
 
         for (String line : fileContent) {
             ArrayList<String> lineComponents = splitString(line);
-            fitnessplans.add(parseFitnessPlan(lineComponents));
+            fitnessPlan.addGoal(parseFitnessPlan(lineComponents));
 
         }
 
-        return fitnessplans;
+        return fitnessPlan;
     }
 
     // EFFECTS: returns a list of strings obtained by splitting line on DELIMITER
@@ -57,25 +59,13 @@ public class Reader {
     // fitness plan name, and element 2 represent the list of goals of the fitness plan
     // to be constructed
     // EFFECTS: returns a fitness plan constructed from components
-    private static FitnessPlan parseFitnessPlan(List<String> components) {
-        String fitnessplanname = components.get(0);
-        String goalname = components.get(1);
+    private static Goal parseFitnessPlan(List<String> components) {
+        Exercise exercise = new Exercise(components.get(2), Double.parseDouble(components.get(3)),
+                Double.parseDouble(components.get(4)));
+        Goal goal = new Goal(components.get(0), components.get(1), exercise);
 
-
-
-        return new FitnessPlan();
-
+        return goal;
 
     }
-
-
-
-
-
-
-
-
-
-
 
 }

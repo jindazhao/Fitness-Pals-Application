@@ -3,36 +3,36 @@ package model;
 
 // Represents an exercise containing the name, calories burned, and the time
 public class Exercise {
-    private String exercisename;
-    private double caloriesburned;
-    private double exercisetime;
+    private String exerciseName;
+    private double caloriesBurned;
+    private double exerciseTime;
 
 
 
     // EFFECTS: constructs an exercise with a description and the calories burned per minute
     public Exercise(String exercisename, double caloriesburned, double exercisetime) {
-        this.exercisename = exercisename;
-        this.caloriesburned = caloriesburned;
-        this.exercisetime = exercisetime;
+        this.exerciseName = exercisename;
+        this.caloriesBurned = caloriesburned;
+        this.exerciseTime = exercisetime;
 
 
     }
 
     // EFFECTS: returns description of exercise
     public String getExerciseName() {
-        return exercisename;
+        return exerciseName;
 
     }
 
     // EFFECTS: returns caloriesburned per minute of exercise
     public double getCaloriesBurned() {
-        return caloriesburned;
+        return caloriesBurned;
 
     }
 
     // EFFECTS: returns the amount of time of the exercise
     public double getExerciseTime() {
-        return exercisetime;
+        return exerciseTime;
 
     }
 

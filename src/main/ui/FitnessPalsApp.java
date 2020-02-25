@@ -5,23 +5,25 @@ import persistence.Reader;
 import persistence.Writer;
 
 
+
 import java.io.*;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 // Fitness Pals Application inspired by TellerApp https://github.students.cs.ubc.ca/CPSC210/TellerApp.git
 public class FitnessPalsApp {
     private static final String FITNESSPLANS_File = "./data/fitnessplan.txt";
-    private FitnessPlan fitnessplan;
-    private String fitnessplanname;
-    private ArrayList<Goal> myfitnessgoals;
-    private Goal mygoal;
+    private FitnessPlan fitnessPlan;
+    private String fitnessPlanName;
+
+
+    private Goal myGoal;
     private Scanner input;
 
     // EFFECTS: runs the fitness app
     public FitnessPalsApp() {
-        fitnessplan = new FitnessPlan();
+        fitnessPlan = new FitnessPlan();
         runFitnessPalsApp();
     }
 
@@ -33,7 +35,7 @@ public class FitnessPalsApp {
         String command = null;
         input = new Scanner(System.in);
 
-       // loadFitnessPlans();
+        loadFitnessPlans();
 
 
         while (keepGoing) {
@@ -58,9 +60,15 @@ public class FitnessPalsApp {
     // otherwise initialize with default
     private void loadFitnessPlans() {
         try {
-           List<FitnessPlan> fitnessplans = Reader.readFitnessPlan(new File(FITNESSPLANS_File));
-           fitnessplan = fitnessplans.get(0);
+            fitnessPlan  = Reader.readFitnessPlan(new File(FITNESSPLANS_File));
         } catch (IOException e) {
+            fitnessPlan = new FitnessPlan();
+
+
+
+
+
+
 
         }
 
@@ -71,7 +79,7 @@ public class FitnessPalsApp {
     private void saveFitnessPlan() {
         try {
             Writer writer = new Writer(new File(FITNESSPLANS_File));
-            writer.write(fitnessplan);
+            writer.write(fitnessPlan);
             writer.close();
             System.out.println("Accounts saved to file" + FITNESSPLANS_File);
         } catch (FileNotFoundException e) {
@@ -79,7 +87,6 @@ public class FitnessPalsApp {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-
 
 
 
@@ -121,13 +128,13 @@ public class FitnessPalsApp {
     // EFFECTS: allows user to view current fitness plan
     private void viewFitnessPlan() {
 
-        if (fitnessplan.getGoals().equals("")) {
-            System.out.println("Your Fitness Plan Name is:" + " " + fitnessplan.getFitnessPlanName());
+        if (fitnessPlan.getGoals().equals("")) {
+            System.out.println("Your Fitness Plan Name is:" + " " + fitnessPlan.getFitnessPlanName());
             System.out.println("No Goals added yet");
         } else {
 
-            System.out.println("Your Fitness Plan Name is:" + " " + fitnessplan.getFitnessPlanName());
-            System.out.println("Your Fitness Goals:" + " " + fitnessplan.getGoals());
+            System.out.println("Your Fitness Plan Name is:" + " " + fitnessPlan.getFitnessPlanName());
+            System.out.println("Your Fitness Goals:" + " " + fitnessPlan.getGoals());
         }
 
     }
@@ -138,9 +145,9 @@ public class FitnessPalsApp {
 
         Scanner input = new Scanner(System.in);
         System.out.println("Please input your new fitness plan name");
-        fitnessplanname = input.nextLine();
-        fitnessplan.updateFitnessPlanName(fitnessplanname);
-        System.out.println("Fitness Plan Name is:" +  " " + fitnessplanname);
+        fitnessPlanName = input.nextLine();
+        fitnessPlan.updateFitnessPlanName(fitnessPlanName);
+        System.out.println("Fitness Plan Name is:" +  " " + fitnessPlanName);
 
     }
 
@@ -153,7 +160,7 @@ public class FitnessPalsApp {
         System.out.println("What is the date of the goal you would like to remove from your fitness plan?");
         removedgoal = input.next();
 
-        fitnessplan.getGoalThatHasDateOf(removedgoal);
+        fitnessPlan.getGoalThatHasDateOf(removedgoal);
 
         System.out.println("Goal from" + " " + removedgoal + " " + "has been removed from your fitness plan!");
 
@@ -167,7 +174,7 @@ public class FitnessPalsApp {
 
 
 
-        fitnessplan.addGoal(makeNewGoal());
+        fitnessPlan.addGoal(makeNewGoal());
 
 
 
@@ -190,12 +197,12 @@ public class FitnessPalsApp {
         goaldate = input.nextLine();
         System.out.println("Goal is due by: " + " " + goaldate);
 
-        mygoal = new Goal(goalname, goaldate, addExercises());
+        myGoal = new Goal(goalname, goaldate, addExercises());
 
 
 
 
-        return mygoal;
+        return myGoal;
 
     }
 
