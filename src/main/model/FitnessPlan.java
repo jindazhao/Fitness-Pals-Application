@@ -1,6 +1,5 @@
 package model;
 
-
 import persistence.Saveable;
 
 import java.io.PrintWriter;
