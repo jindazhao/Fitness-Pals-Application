@@ -65,6 +65,18 @@ public class FitnessPlan implements Saveable {
         }
     }
 
+    public Goal getGoalThatHasDate(String date) {
+        Goal mygoal = null;
+        for (Goal in : fitnessPlanGoals) {
+            int placement = fitnessPlanGoals.indexOf(in);
+            mygoal = fitnessPlanGoals.get(placement);
+            if (mygoal.getDate() == date) {
+                return mygoal;
+            }
+        }
+        return mygoal;
+    }
+
     // EFFECTS: Prints all the components of the plan to a txt file
     // inspired by TellerApp https://github.students.cs.ubc.ca/CPSC210/TellerApp.git
     @Override
@@ -84,5 +96,10 @@ public class FitnessPlan implements Saveable {
             printWriter.print(i.getExerciseDuration());
             printWriter.print("\n");
         }
+    }
+
+    public void complete(Goal goal) {
+        goal.setDone();
+
     }
 }

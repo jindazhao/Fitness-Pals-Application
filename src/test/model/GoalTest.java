@@ -29,5 +29,8 @@ public class GoalTest {
         assertEquals("Crunches", myfirstgoal.getGoalExerciseName());
         assertEquals(100, myfirstgoal.getExerciseCalories());
         assertEquals(10, myfirstgoal.getExerciseDuration());
+        assertEquals(false, myfirstgoal.getCompleted());
+        myfirstgoal.setDone();
+        assertEquals(true, myfirstgoal.getCompleted());
     }
 }
