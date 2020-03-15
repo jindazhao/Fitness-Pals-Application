@@ -1,10 +1,6 @@
 package ui;
 
 
-import com.sun.corba.se.impl.orbutil.graph.Graph;
-import com.sun.imageio.plugins.jpeg.JPEGImageReader;
-import javafx.scene.image.Image;
-import javafx.scene.layout.Border;
 import model.Corgi;
 import model.Exercise;
 import model.FitnessPlan;
@@ -12,7 +8,6 @@ import model.Goal;
 import persistence.Reader;
 import persistence.Writer;
 
-import javax.imageio.ImageIO;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -21,17 +16,17 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.Component;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.util.Scanner;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-public class UI extends JFrame implements ActionListener {
+
+
+public class GUI extends JFrame implements ActionListener {
     private JLabel label;
     private JTextField field;
     private  BoxLayout boxLayout;
@@ -56,9 +51,8 @@ public class UI extends JFrame implements ActionListener {
 
     private Corgi corgi;
 
-
-
-    public UI() {
+    // Constructs a new JFrame with different JPanels and their features
+    public GUI() {
         super("Fitness Pals");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(550, 700));
@@ -106,6 +100,9 @@ public class UI extends JFrame implements ActionListener {
         menuPanel.setVisible(true);
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds the constructed JLabels of the title and of the image, setting their sizes and fonts,
+    // to the menu Panel;
     public void doJLabelSettings(JLabel jlabel, JLabel label2) {
         jlabel.setFont(new Font("SansSerif", Font.BOLD, 60));
         label2.setIcon(new ImageIcon("./data/61MdczSfPqL._AC_SL1500_.jpg"));
@@ -116,6 +113,9 @@ public class UI extends JFrame implements ActionListener {
 
     }
 
+
+    // MODIFIES: this
+    // EFFECTS: Sets the actions command for the buttons located on the menu panel
     public void setButtonsCommands(JButton btn1, JButton btn2, JButton btn3, JButton btn4, JButton btn5, JButton btn7) {
         btn1.setActionCommand("View Your Fitness Plan");
         btn1.addActionListener(this); // Sets "this" object as an action listener for btn
@@ -132,6 +132,7 @@ public class UI extends JFrame implements ActionListener {
 
     }
 
+    // EFFECTS: makes all the other panels
     public void makePanels() {
         makeViewFitnessPanel();
         makeUpdateFitnessPlaPanel();
@@ -139,6 +140,8 @@ public class UI extends JFrame implements ActionListener {
         makeRemoveAGoalPanel();
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds all the buttons constructed to the menuPanel
     public void addButtonsToMenu(JButton b1, JButton b2, JButton b3) {
         menuPanel.add(b1);
         pack();
@@ -159,6 +162,8 @@ public class UI extends JFrame implements ActionListener {
 
     }
 
+    // MODIFIES: this
+    // EFFECTS: Loads the fitness Plan
     private void loadFitnessPlans() {
         try {
             fitnessPlan  = Reader.readFitnessPlan(new File(FITNESSPLANS_File));
@@ -171,6 +176,7 @@ public class UI extends JFrame implements ActionListener {
     }
 
 
+    // EFFECTS: Saves the fitness Plan
     private void saveFitnessPlan() {
         try {
             Writer writer = new Writer(new File(FITNESSPLANS_File));
@@ -216,6 +222,7 @@ public class UI extends JFrame implements ActionListener {
         }
     }
 
+    // EFFECTS: Plays a sound effect when one of the corresponding buttons is clicked
     public void playSound(String soundName) {
         try {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
@@ -228,16 +235,22 @@ public class UI extends JFrame implements ActionListener {
         }
     }
 
+    // MODIFIES: goal
+    // EFFECTS: Sets to true when a goal is complete
     public void doCompleteGoal() {
         fitnessPlan.getGoalThatHasDate(field2.getText()).setDone();
     }
 
+    // MODIFIES: this
+    // EFFECTS: sets the new name of the fitness plan
     public void doUpdateName() {
         fitnessPlanName = field.getText();
         fitnessPlan.updateFitnessPlanName(fitnessPlanName);
         label.setText("Your Plan Name is: " + fitnessPlan.getFitnessPlanName());
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds a goal into the list of goals in the fitness plan
     public void doAction() {
         Exercise exercise = new Exercise(text3.getText(), Double.parseDouble(text4.getText()),
                 Double.parseDouble(text5.getText()));
@@ -248,7 +261,8 @@ public class UI extends JFrame implements ActionListener {
     }
 
 
-
+    // EFFECTS: constructs and new JPanel tht will display the name, the list of goals, a picture, and the back to
+    // menu button
     public void makeViewFitnessPanel() {
         viewPanel = new JPanel();
 
@@ -279,6 +293,7 @@ public class UI extends JFrame implements ActionListener {
 
     }
 
+    // EFFECTS: Makes a new JPanel that has a JLabel, a textfield, a button to update the name and a back to menu button
     public void makeUpdateFitnessPlaPanel() {
         updatePanel = new JPanel();
         boxLayout = new BoxLayout(updatePanel, BoxLayout.Y_AXIS);
@@ -305,6 +320,8 @@ public class UI extends JFrame implements ActionListener {
         updatePanel.add(menuButton);
     }
 
+    // EFFECTS: Makes a new JPanel with alternating textfields and JLabels, an adding a goal button
+    // and the back to menu button
     public void makeAddAGoalPanel() {
         goalPanel = new JPanel();
         boxLayout = new BoxLayout(goalPanel, BoxLayout.Y_AXIS);
@@ -325,34 +342,15 @@ public class UI extends JFrame implements ActionListener {
         text4 = new JTextField(5);
         JLabel label5 = new JLabel("Please type in the target duration of the exercise in minutes:");
         text5 = new JTextField(5);
-//        label0.setFont(new Font("SansSerif", Font.BOLD, 15));
-//        label1.setFont(new Font("SansSerif", Font.BOLD, 15));
-//        label3.setFont(new Font("SansSerif", Font.BOLD, 15));
-//        label4.setFont(new Font("SansSerif", Font.BOLD, 15));
-//        label5.setFont(new Font("SansSerif", Font.BOLD, 15));
+
         setAllFont(label0, label1, label3, label4, label5);
         setMaxTextSize(text0, text1, text3, text4, text5);
-//        text0.setMaximumSize(new Dimension(1200, 40));
-//        text1.setMaximumSize(new Dimension(1200, 40));
-//        text3.setMaximumSize(new Dimension(1200, 40));
-//        text4.setMaximumSize(new Dimension(1200, 40));
-//        text5.setMaximumSize(new Dimension(1200, 40));
+
         addAllToGoalPanel(label0, text0, label1, text1, label3, text3, label4, text4, label5, text5, btn, menuButton);
 
-//        goalPanel.add(label0);
-//        goalPanel.add(text0);
-//        goalPanel.add(label1);
-//        goalPanel.add(text1);
-//        goalPanel.add(label3);
-//        goalPanel.add(text3);
-//        goalPanel.add(label4);
-//        goalPanel.add(text4);
-//        goalPanel.add(label5);
-//        goalPanel.add(text5);
-//        goalPanel.add(btn);
-//        goalPanel.add(menuButton);
     }
 
+    // EFFECTS: sets all the fonts of the labels in the goalPanel
     public void setAllFont(JLabel l1, JLabel l2, JLabel l3, JLabel l4, JLabel l5) {
         l1.setFont(new Font("SansSerif", Font.BOLD, 15));
         l2.setFont(new Font("SansSerif", Font.BOLD, 15));
@@ -362,6 +360,7 @@ public class UI extends JFrame implements ActionListener {
 
     }
 
+    // EFFECTS: sets the size of the JTextFields in the goalPanel
     public void setMaxTextSize(JTextField t1, JTextField t2, JTextField t3, JTextField t4, JTextField t5) {
         t1.setMaximumSize(new Dimension(1200, 40));
         t2.setMaximumSize(new Dimension(1200, 40));
@@ -370,6 +369,7 @@ public class UI extends JFrame implements ActionListener {
         t5.setMaximumSize(new Dimension(1200, 40));
     }
 
+    // EFFECTS: Adds all the labels and the textfields to the goalPanel
     public void addAllToGoalPanel(JLabel l1, JTextField t1,
                                   JLabel l2, JTextField t2, JLabel l3, JTextField t3,
                                   JLabel l4, JTextField t4, JLabel l5, JTextField t5,
@@ -386,13 +386,10 @@ public class UI extends JFrame implements ActionListener {
         goalPanel.add(t5);
         goalPanel.add(b1);
         goalPanel.add(b2);
-
-
-
     }
 
 
-
+    // EFFECTS: Makes a new JPanel with a JLabel, a JTextField, a checkoff compete button and a back to menu button
     public void makeRemoveAGoalPanel() {
         removePanel = new JPanel();
         boxLayout = new BoxLayout(removePanel, BoxLayout.Y_AXIS);
@@ -411,6 +408,8 @@ public class UI extends JFrame implements ActionListener {
         removePanel.add(menuButton);
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds the viewPanel to the menuPanel and turns on its visibility
     public void viewFitnessPlan() {
         add(viewPanel);
         menuPanel.setVisible(false);
@@ -420,6 +419,8 @@ public class UI extends JFrame implements ActionListener {
         viewPanel.setVisible(true);
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds the updatePanel to the menuPanel and turns on its visibility
     public void updateFitnessPlanName() {
         add(updatePanel);
         menuPanel.setVisible(false);
@@ -429,6 +430,8 @@ public class UI extends JFrame implements ActionListener {
         updatePanel.setVisible(true);
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds the goalPanel to the menuPanel and turns on its visibility
     public void addGoalToFitnessPlan() {
         add(goalPanel);
         menuPanel.setVisible(false);
@@ -438,6 +441,8 @@ public class UI extends JFrame implements ActionListener {
         goalPanel.setVisible(true);
     }
 
+    // MODIFIES: this
+    // EFFECTS: adds the removePanel to the menuPanel and turns on its visibility
     public void takeAwayAGoal() {
         add(removePanel);
         viewPanel.setVisible(false);
@@ -447,6 +452,8 @@ public class UI extends JFrame implements ActionListener {
         removePanel.setVisible(true);
     }
 
+    // MODIFIES: this
+    // EFFECTS: turns off visibility for all the panels except for the menu panel to display it
     public void backToMenu() {
         viewPanel.setVisible(false);
         updatePanel.setVisible(false);
@@ -456,6 +463,6 @@ public class UI extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        new UI();
+        new GUI();
     }
 }
