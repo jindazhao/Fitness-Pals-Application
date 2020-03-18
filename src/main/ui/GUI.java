@@ -338,7 +338,7 @@ public class GUI extends JFrame implements ActionListener {
         text1 = new JTextField(5);
         JLabel label3 = new JLabel("Please type in the name if your exercise:");
         text3 = new JTextField(5);
-        JLabel label4 = new JLabel("Please type in the the target calories you want to burn from this exercise:");
+        JLabel label4 = new JLabel("Please type in the target calories you want to burn from this exercise:");
         text4 = new JTextField(5);
         JLabel label5 = new JLabel("Please type in the target duration of the exercise in minutes:");
         text5 = new JTextField(5);

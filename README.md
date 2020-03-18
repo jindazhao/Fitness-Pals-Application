@@ -51,3 +51,32 @@ will become.
 - As a user, I want to be able to save my fitness plan as an option when I quit my application
 - As a user, I want to be able to load my fitness plan that I had saved when I open the application
 
+# Instructions for Grader
+
+Note: turn up your volume for some cool sound effects!
+
+- Step 1: Run the GUI class and have a look at the documentation if you wish. When you first start the application up
+you will find that it brings you to the menu screen with an image of a dog. 
+- Step 2: In order to complete the first of the two required adding an X to  Y, in my application you can add a name to 
+the fitness plan. By doing so you will be satisfying this requirement. To do so, please view click on the view button
+and notice how the name is null. Go back to the menu and click on the "Update Your Fitness Plan Name" button and type in
+a name. After, there is a button right underneath to update the name. After clicking that button, please head back to 
+view your fitness plan and notice how the name has been updated. 
+- Step 3: In order to complete second of two required events, in my application, you can add an exercise to a goal and 
+add multiple goals to the fitness plan. Please first view the fitness plan and notice how the goals list is empty. 
+In the menu, click on the
+add a goal button and fill out the required areas. Please note that whenever asking for number, please type in as
+integers or doubles and when asking for the date type in the format "dd/mm/yyyy". After that there is a button to add 
+the goals. Finally, view the new goal that has been added to 
+your plan by heading back to the menu and viewing it. You can repeat this process multiple times as you wish. 
+Note that the way I have the user view their goals is in a
+JTextField. This will change in the next phase as I will try to improve my GUI. 
+- Step 4: There are a couple visual and a couple audio components. First the menu page has a image and as well as the 
+updating your name page and viewing page. As well, you may have noticed that there were sounds effects when you clicked 
+"View Fitness Plan" and when you clicked on the button inside the adding a goal page. The images will change to 
+animations (hopefully) in the future phase. 
+- Step 5: Save the fitness plan by clicking on the save button in the menu page. After, exit out the application by 
+clicking the X at the top right corner. You can also check that it saves by going over to the directory and checking the 
+"fitnessplan.txt" file. 
+- Step 6: Run the GUI Class. First, view that the current fitness plan is empty/null, then go back and click load and 
+then view the fitness plan again and notice how everything was loaded.      
