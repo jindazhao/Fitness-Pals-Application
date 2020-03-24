@@ -3,6 +3,7 @@ package model.persistence;
 import model.Exercise;
 import model.FitnessPlan;
 import model.Goal;
+import model.NoNameExecption;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import persistence.Reader;
@@ -53,6 +54,8 @@ public class WriterTest {
             assertEquals(2, fitnessPlan.getTotalNumberOfGoals());
         } catch (IOException e) {
             fail("IOException should not have been thrown");
+        } catch (NoNameExecption noNameExecption) {
+            noNameExecption.printStackTrace();
         }
     }
 }

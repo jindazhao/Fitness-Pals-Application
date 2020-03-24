@@ -79,4 +79,21 @@ animations (hopefully) in the future phase.
 clicking the X at the top right corner. You can also check that it saves by going over to the directory and checking the 
 "fitnessplan.txt" file. 
 - Step 6: Run the GUI Class. First, view that the current fitness plan is empty/null, then go back and click load and 
-then view the fitness plan again and notice how everything was loaded.      
+then view the fitness plan again and notice how everything was loaded.
+
+# Phase 4: Task 2
+
+Option 1: Class: FitnessPlan Method: getFitnessPlan(); if there is no name fo the fitness plan then 
+it will throw a checked exception. In GUI, ReaderTest, WriterTest, FitnessPlanTest, were all made more robust because of
+this change:
+Class/Method: FitnessPlan/getFitnessPlan(), GUI/loadFitnessPlan()/doUpdateName()/viewMakeFitnessPanel(), 
+ReaderTest/testParseFitnessFile1(), WriterTest/testWriteFitnessPlan(), FitnessPlanTest/
+testConstructorAndCatchException()
+/textAddMultipleGoalsAndNoExceptionThrown();
+
+Because I have made FitnessPlan: getFitnessPlan() more robust, the ones listed have also become more robust.
+
+# Phase 4: Task 3
+
+
+       

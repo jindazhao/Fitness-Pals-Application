@@ -1,10 +1,7 @@
 package ui;
 
 
-import model.Corgi;
-import model.Exercise;
-import model.FitnessPlan;
-import model.Goal;
+import model.*;
 import persistence.Reader;
 import persistence.Writer;
 
@@ -171,6 +168,8 @@ public class GUI extends JFrame implements ActionListener {
             label1.setText("Your Fitness Goals: " + fitnessPlan.getGoals());
         } catch (IOException e) {
             fitnessPlan = new FitnessPlan();
+        } catch (NoNameExecption noNameExecption) {
+            label.setText("No Fitness Plan Name Added Yet");
         }
 
     }
@@ -246,7 +245,11 @@ public class GUI extends JFrame implements ActionListener {
     public void doUpdateName() {
         fitnessPlanName = field.getText();
         fitnessPlan.updateFitnessPlanName(fitnessPlanName);
-        label.setText("Your Plan Name is: " + fitnessPlan.getFitnessPlanName());
+        try {
+            label.setText("Your Plan Name is: " + fitnessPlan.getFitnessPlanName());
+        } catch (NoNameExecption noNameExecption) {
+            label.setText("No Fitness Plan Name Added Yet");
+        }
     }
 
     // MODIFIES: this
@@ -273,7 +276,11 @@ public class GUI extends JFrame implements ActionListener {
 
         boxLayout = new BoxLayout(viewPanel, BoxLayout.Y_AXIS);
         viewPanel.setLayout(boxLayout);
-        label = new JLabel("Your Plan Name is: " + fitnessPlan.getFitnessPlanName());
+        try {
+            label = new JLabel("Your Plan Name is: " + fitnessPlan.getFitnessPlanName());
+        } catch (NoNameExecption noNameExecption) {
+            label = new JLabel("No Fitness Plan Name Added Yet");
+        }
         label1 = new JTextField("Your Fitness Goals: " + fitnessPlan.getGoals());
         label.setFont(new Font("SansSerif", Font.PLAIN, 25));
         label1.setFont(new Font("SansSerif", Font.PLAIN, 18));

@@ -26,30 +26,43 @@ class FitnessPlanTest {
 
     @Test
     void testConstructor() {
-        assertEquals(null, myfitnessplan.getFitnessPlanName());
+        try {
+            assertEquals(null, myfitnessplan.getFitnessPlanName());
+        } catch (NoNameExecption noNameExecption) {
+            noNameExecption.printStackTrace();
+
+        }
         assertEquals(0, myfitnessplan.getTotalNumberOfGoals());
     }
 
     @Test
-    void testAddOneGoal() {
+    void testAddOneGoalAndCatchException() {
 
         myfitnessplan.addGoal(myfirstgoal);
         myfitnessplan.updateFitnessPlanName("Lose Weight");
 
-        assertEquals("Lose Weight", myfitnessplan.getFitnessPlanName() );
+        try {
+            assertEquals("Lose Weight", myfitnessplan.getFitnessPlanName() );
+        } catch (NoNameExecption noNameExecption) {
+            noNameExecption.printStackTrace();
+        }
         assertEquals(1, myfitnessplan.getTotalNumberOfGoals());
         assertEquals("Lose Weight: 01/01/2020 Crunches 100.0 10.0\n", myfitnessplan.getGoals());
     }
 
     @Test
-    void testAddMultipleGoals() {
+    void testAddMultipleGoalsAndNoExceptionThrown() {
         myfitnessplan.updateFitnessPlanName("Lose Weight");
         myfitnessplan.addGoal(myfirstgoal);
         myfitnessplan.addGoal(mysecondgoal);
         assertEquals(mysecondgoal, myfitnessplan.getGoalThatHasDate("01/02/2020"));
 
 
-        assertEquals("Lose Weight", myfitnessplan.getFitnessPlanName());
+        try {
+            assertEquals("Lose Weight", myfitnessplan.getFitnessPlanName());
+        } catch (NoNameExecption noNameExecption) {
+            fail("Failed");
+        }
         assertEquals(2, myfitnessplan.getTotalNumberOfGoals());
         assertEquals("Lose Weight: 01/01/2020 Crunches 100.0 10.0\n" +
                 "Lose More Weight and Get More Sleep: 01/02/2020 Planks 100.0 10.0\n", myfitnessplan.getGoals());

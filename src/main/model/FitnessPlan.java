@@ -23,7 +23,10 @@ public class FitnessPlan implements Saveable {
     }
 
     // EFFECTS: returns the name of the fitness plan
-    public String getFitnessPlanName() {
+    public String getFitnessPlanName() throws NoNameExecption {
+        if (fitnessPlanName == null) {
+            throw new NoNameExecption("No Fitness Plan Name Yet!");
+        }
         return fitnessPlanName;
     }
 

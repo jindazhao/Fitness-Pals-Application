@@ -5,8 +5,6 @@ import persistence.Reader;
 import persistence.Writer;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 // Fitness Pals Application inspired by TellerApp https://github.students.cs.ubc.ca/CPSC210/TellerApp.git
@@ -110,10 +108,18 @@ public class FitnessPalsApp {
     private void viewFitnessPlan() {
 
         if (fitnessPlan.getGoals().equals("")) {
-            System.out.println("Your Fitness Plan Name is:" + " " + fitnessPlan.getFitnessPlanName());
+            try {
+                System.out.println("Your Fitness Plan Name is:" + " " + fitnessPlan.getFitnessPlanName());
+            } catch (NoNameExecption noNameExecption) {
+                noNameExecption.printStackTrace();
+            }
             System.out.println("No Goals added yet");
         } else {
-            System.out.println("Your Fitness Plan Name is:" + " " + fitnessPlan.getFitnessPlanName());
+            try {
+                System.out.println("Your Fitness Plan Name is:" + " " + fitnessPlan.getFitnessPlanName());
+            } catch (NoNameExecption noNameExecption) {
+                noNameExecption.printStackTrace();
+            }
             System.out.println("Your Fitness Goals:" + " " + fitnessPlan.getGoals());
         }
     }

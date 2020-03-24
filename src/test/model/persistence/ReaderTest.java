@@ -1,6 +1,7 @@
 package model.persistence;
 
 import model.FitnessPlan;
+import model.NoNameExecption;
 import org.junit.jupiter.api.Test;
 import persistence.Reader;
 
@@ -22,6 +23,8 @@ public class ReaderTest {
 
         } catch (IOException e) {
             fail("IOException should not have been thrown");
+        } catch (NoNameExecption noNameExecption) {
+            noNameExecption.printStackTrace();
         }
     }
 
