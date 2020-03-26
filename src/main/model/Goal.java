@@ -55,14 +55,13 @@ public class Goal extends Corgi {
 
     public void setDone() {
         completed = true;
-        if (happiness < 10) {
-            setHappiness(happiness + 1);
-        }
-
-
-
-
+        setHappiness(happiness + 1);
     }
+
+
+
+
+
 
 
 }

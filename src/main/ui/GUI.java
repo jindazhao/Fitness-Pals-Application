@@ -273,7 +273,6 @@ public class GUI extends JFrame implements ActionListener {
         jl.setIcon(new ImageIcon("./data/512x512bb.jpg"));
         jl.setMinimumSize(new Dimension(800,400));
 
-
         boxLayout = new BoxLayout(viewPanel, BoxLayout.Y_AXIS);
         viewPanel.setLayout(boxLayout);
         try {
@@ -282,9 +281,7 @@ public class GUI extends JFrame implements ActionListener {
             label = new JLabel("No Fitness Plan Name Added Yet");
         }
         label1 = new JTextField("Your Fitness Goals: " + fitnessPlan.getGoals());
-        label.setFont(new Font("SansSerif", Font.PLAIN, 25));
-        label1.setFont(new Font("SansSerif", Font.PLAIN, 18));
-
+        setFontsOf(label, label1);
 
         JLabel label2 = new JLabel("Your Fitness Pal: ");
         label2.setFont(new Font("SansSerif", Font.PLAIN, 18));
@@ -297,6 +294,12 @@ public class GUI extends JFrame implements ActionListener {
         viewPanel.add(jl);
         viewPanel.add(menuButton);
 
+    }
+
+    //EFFECTS: Sets font of the text in ViewPanel
+    public void setFontsOf(JLabel label, JTextField label1) {
+        label.setFont(new Font("SansSerif", Font.PLAIN, 25));
+        label1.setFont(new Font("SansSerif", Font.PLAIN, 18));
 
     }
 
@@ -469,7 +472,7 @@ public class GUI extends JFrame implements ActionListener {
         menuPanel.setVisible(true);
     }
 
-    public static void main(String[] args) {
-        new GUI();
-    }
+//    public static void main(String[] args) {
+//        new GUI();
+//    }
 }

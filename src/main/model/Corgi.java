@@ -23,6 +23,10 @@ public class Corgi {
 
     // set the happiness of the corgi and set dead, happy, and sad according to the scale
     public void setHappiness(int hhappiness) {
+        if (hhappiness <= 10) {
+            happiness = 10;
+        }
+
         happiness = hhappiness;
         if (happiness == 0) {
             setDead(true);
@@ -38,6 +42,7 @@ public class Corgi {
             setSad(false);
         }
     }
+
 
     public void setHappy(Boolean hap) {
         happy = hap;

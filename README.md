@@ -95,5 +95,14 @@ Because I have made FitnessPlan: getFitnessPlan() more robust, the ones listed h
 
 # Phase 4: Task 3
 
+- First Change: There was poor cohesion and in my GUI class it ran and created a new GUI. This did not obey the single
+responsibility and thus had poor cohesion. I refactored it so that in my Main Class I called a new GUI and had the GUI
+only focus on creating a new GUI. 
+- Second Change: In order to improve cohesion, I noticed that in my Goal Class I was checking something that was in my 
+Corgi class and this violated the single responsibility principle as my Goal Class should only be concerned about the 
+Goal class aspects. So I refactored the method setDone() and made changes to my Corgi class to check the preconditions
+instead of having that method check the preconditions thus making is adhere to the single responsibility principle. 
+
+
 
        
