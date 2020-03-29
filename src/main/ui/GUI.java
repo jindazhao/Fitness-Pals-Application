@@ -36,6 +36,8 @@ public class GUI extends JFrame implements ActionListener {
     private JPanel updatePanel;
     private JPanel removePanel;
     private Goal myGoal;
+    private Writer writer;
+    private Reader reader;
 
     private JTextField text0;
     private JTextField text1;
@@ -46,7 +48,6 @@ public class GUI extends JFrame implements ActionListener {
     private JTextField label1;
     private JTextField field2;
 
-    private Corgi corgi;
 
     // Constructs a new JFrame with different JPanels and their features
     public GUI() {
@@ -54,11 +55,10 @@ public class GUI extends JFrame implements ActionListener {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(550, 700));
         ((JPanel) getContentPane()).setBorder(new EmptyBorder(13, 13, 13, 13));
-        menuPanel = new JPanel();
+        menuPanel = new Panel().getViewPanel();
         fitnessPlan = new FitnessPlan();
         add(menuPanel);
-        boxLayout = new BoxLayout(menuPanel, BoxLayout.Y_AXIS);
-        menuPanel.setLayout(boxLayout);
+
         JButton btn1 = new JButton("View  Your  Fitness  Plan  Goals");
         JButton btn2 = new JButton("Update Your Fitness Plan Name");
         JButton btn3 = new JButton("Add  Goal  to  Your  Fitness Plan");
@@ -67,25 +67,6 @@ public class GUI extends JFrame implements ActionListener {
         JButton btn7 = new JButton("Load  your  saved   Fitness  Plan");
 
         setButtonsCommands(btn1, btn2, btn3, btn4, btn5, btn7);
-
-
-
-//        btn1.setActionCommand("View Your Fitness Plan");
-//        btn1.addActionListener(this); // Sets "this" object as an action listener for btn
-//        btn2.setActionCommand("Update Your Fitness Plan Name");
-//        btn2.addActionListener(this); // Sets "this" object as an action listener for btn
-//        btn3.setActionCommand("Add a Goal");
-//        btn3.addActionListener(this); // Sets "this" object as an action listener for btn
-//        btn4.setActionCommand("Check off a Goal");
-//        btn4.addActionListener(this); // Sets "this" object as an action listener for btn
-//        btn5.setActionCommand("Save your Fitness Plan");
-//        btn5.addActionListener(this); // Sets "this" object as an action listener for btn
-//        btn7.setActionCommand("Load Fitness Plan");
-//        btn7.addActionListener(this);
-        // so that when the btn is clicked,
-        // this.actionPerformed(ActionEvent e) will be called.
-        // You could also set a different object, if you wanted
-        // a different object to respond to the button click
 
         JLabel jlabel = new JLabel("FITNESS PALS");
         JLabel label2 = new JLabel();
@@ -163,7 +144,7 @@ public class GUI extends JFrame implements ActionListener {
     // EFFECTS: Loads the fitness Plan
     private void loadFitnessPlans() {
         try {
-            fitnessPlan  = Reader.readFitnessPlan(new File(FITNESSPLANS_File));
+            fitnessPlan  = reader.readFitnessPlan(new File(FITNESSPLANS_File));
             label.setText("Your Plan Name is: " + fitnessPlan.getFitnessPlanName());
             label1.setText("Your Fitness Goals: " + fitnessPlan.getGoals());
         } catch (IOException e) {
@@ -178,7 +159,7 @@ public class GUI extends JFrame implements ActionListener {
     // EFFECTS: Saves the fitness Plan
     private void saveFitnessPlan() {
         try {
-            Writer writer = new Writer(new File(FITNESSPLANS_File));
+            writer = new Writer(new File(FITNESSPLANS_File));
             writer.write(fitnessPlan);
             writer.close();
             System.out.println("Accounts saved to file" + FITNESSPLANS_File);
@@ -267,14 +248,12 @@ public class GUI extends JFrame implements ActionListener {
     // EFFECTS: constructs and new JPanel tht will display the name, the list of goals, a picture, and the back to
     // menu button
     public void makeViewFitnessPanel() {
-        viewPanel = new JPanel();
+        viewPanel = new Panel().getViewPanel();
 
         JLabel jl = new JLabel();
         jl.setIcon(new ImageIcon("./data/512x512bb.jpg"));
         jl.setMinimumSize(new Dimension(800,400));
 
-        boxLayout = new BoxLayout(viewPanel, BoxLayout.Y_AXIS);
-        viewPanel.setLayout(boxLayout);
         try {
             label = new JLabel("Your Plan Name is: " + fitnessPlan.getFitnessPlanName());
         } catch (NoNameExecption noNameExecption) {
@@ -305,9 +284,8 @@ public class GUI extends JFrame implements ActionListener {
 
     // EFFECTS: Makes a new JPanel that has a JLabel, a textfield, a button to update the name and a back to menu button
     public void makeUpdateFitnessPlaPanel() {
-        updatePanel = new JPanel();
-        boxLayout = new BoxLayout(updatePanel, BoxLayout.Y_AXIS);
-        updatePanel.setLayout(boxLayout);
+        updatePanel = new Panel().getViewPanel();
+
         JButton menuButton = new JButton("Back to Menu");
         menuButton.setActionCommand("Back to Menu");
         menuButton.addActionListener(this);
@@ -333,9 +311,8 @@ public class GUI extends JFrame implements ActionListener {
     // EFFECTS: Makes a new JPanel with alternating textfields and JLabels, an adding a goal button
     // and the back to menu button
     public void makeAddAGoalPanel() {
-        goalPanel = new JPanel();
-        boxLayout = new BoxLayout(goalPanel, BoxLayout.Y_AXIS);
-        goalPanel.setLayout(boxLayout);
+        goalPanel = new Panel().getViewPanel();
+
         JButton menuButton = new JButton("Back to Menu");
         menuButton.setActionCommand("Back to Menu");
         menuButton.addActionListener(this);
@@ -401,9 +378,7 @@ public class GUI extends JFrame implements ActionListener {
 
     // EFFECTS: Makes a new JPanel with a JLabel, a JTextField, a checkoff compete button and a back to menu button
     public void makeRemoveAGoalPanel() {
-        removePanel = new JPanel();
-        boxLayout = new BoxLayout(removePanel, BoxLayout.Y_AXIS);
-        removePanel.setLayout(boxLayout);
+        removePanel = new Panel().getViewPanel();
         JButton menuButton = new JButton("Back to Menu");
         menuButton.setActionCommand("Back to Menu");
         menuButton.addActionListener(this);

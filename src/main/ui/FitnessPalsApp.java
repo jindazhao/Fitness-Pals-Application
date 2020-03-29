@@ -12,6 +12,8 @@ public class FitnessPalsApp {
     private static final String FITNESSPLANS_File = "./data/fitnessplan.txt";
     private FitnessPlan fitnessPlan;
     private String fitnessPlanName;
+    private Writer writer;
+    private Reader reader;
 
     private Goal myGoal;
     private Scanner input;
@@ -51,7 +53,7 @@ public class FitnessPalsApp {
     // otherwise initialize with default
     private void loadFitnessPlans() {
         try {
-            fitnessPlan  = Reader.readFitnessPlan(new File(FITNESSPLANS_File));
+            fitnessPlan  = reader.readFitnessPlan(new File(FITNESSPLANS_File));
         } catch (IOException e) {
             fitnessPlan = new FitnessPlan();
         }
@@ -60,7 +62,7 @@ public class FitnessPalsApp {
     // EFFECTS: saves state of the fitness plan with the fitness plan name and list of goals
     private void saveFitnessPlan() {
         try {
-            Writer writer = new Writer(new File(FITNESSPLANS_File));
+            writer = new Writer(new File(FITNESSPLANS_File));
             writer.write(fitnessPlan);
             writer.close();
             System.out.println("Accounts saved to file" + FITNESSPLANS_File);

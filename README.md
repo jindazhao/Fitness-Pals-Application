@@ -91,17 +91,27 @@ ReaderTest/testParseFitnessFile1(), WriterTest/testWriteFitnessPlan(), FitnessPl
 testConstructorAndCatchException()
 /textAddMultipleGoalsAndNoExceptionThrown();
 
-Because I have made FitnessPlan: getFitnessPlan() more robust, the ones listed have also become more robust.
+Because I have made FitnessPlan: getFitnessPlan() more robust, the ones listed have also become more robust as well.
 
 # Phase 4: Task 3
 
-- First Change: There was poor cohesion and in my GUI class it ran and created a new GUI. This did not obey the single
+- First Change: There was poor cohesion and in my GUI class where it ran and created a new GUI. This did not obey the 
+single
 responsibility and thus had poor cohesion. I refactored it so that in my Main Class I called a new GUI and had the GUI
 only focus on creating a new GUI. 
-- Second Change: In order to improve cohesion, I noticed that in my Goal Class I was checking something that was in my 
+- Second Change: In order to improve cohesion, I noticed my GUI did not follow the single responsibility principle
+where it made the JPanels AND added elements to them as well. For the GUI, it should only be adding the elements to the 
+panels. As well, there was a a lot of repetitive code so I refactored and made a panel class that made a new JPanel 
+and set the same formatting so there was consistency across all panels. This improved cohesion by only letting the GUI 
+focus on 
+adding elements to the panels instead of creating new JPanels AND setting their formatting AND adding elements.
+- Third Change: In order to improve cohesion, I noticed that in my Goal Class I was checking something that was in my 
 Corgi class and this violated the single responsibility principle as my Goal Class should only be concerned about the 
 Goal class aspects. So I refactored the method setDone() and made changes to my Corgi class to check the preconditions
-instead of having that method check the preconditions thus making is adhere to the single responsibility principle. 
+instead of having that method check the preconditions thus making it adhere to the single responsibility principle.
+
+As for my UML Diagram, on piazza said not to include Exception classes, Test Classes, and dependencies. The UML diagram
+can be found in src file.  
 
 
 

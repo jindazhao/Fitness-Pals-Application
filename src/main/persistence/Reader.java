@@ -14,7 +14,7 @@ import java.util.List;
 // reader class inspired by TellerApp https://github.students.cs.ubc.ca/CPSC210/TellerApp.git
 public class Reader {
     public static final String DELIMITER = ";";
-    public static final Goal GOAL = null;
+
 
     // EFFECTS: returns a fitness plan from a file
     // IOException if an exception is raised when opening / reading from file
