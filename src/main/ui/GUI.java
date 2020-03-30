@@ -144,6 +144,7 @@ public class GUI extends JFrame implements ActionListener {
     // EFFECTS: Loads the fitness Plan
     private void loadFitnessPlans() {
         try {
+            reader = new Reader();
             fitnessPlan  = reader.readFitnessPlan(new File(FITNESSPLANS_File));
             label.setText("Your Plan Name is: " + fitnessPlan.getFitnessPlanName());
             label1.setText("Your Fitness Goals: " + fitnessPlan.getGoals());

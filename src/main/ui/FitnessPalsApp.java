@@ -53,6 +53,7 @@ public class FitnessPalsApp {
     // otherwise initialize with default
     private void loadFitnessPlans() {
         try {
+            reader = new Reader();
             fitnessPlan  = reader.readFitnessPlan(new File(FITNESSPLANS_File));
         } catch (IOException e) {
             fitnessPlan = new FitnessPlan();
