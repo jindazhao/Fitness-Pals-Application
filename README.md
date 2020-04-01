@@ -83,7 +83,7 @@ then view the fitness plan again and notice how everything was loaded.
 
 # Phase 4: Task 2
 
-Option 1: Class: FitnessPlan Method: getFitnessPlan(); if there is no name fo the fitness plan then 
+Option 1: Class: FitnessPlan Method: getFitnessPlan(); if there is no name for the fitness plan then 
 it will throw a checked exception. In GUI, ReaderTest, WriterTest, FitnessPlanTest, were all made more robust because of
 this change:
 Class/Method: FitnessPlan/getFitnessPlan(), GUI/loadFitnessPlan()/doUpdateName()/viewMakeFitnessPanel(), 
