@@ -478,8 +478,5 @@ public class GUI extends JFrame implements ActionListener {
         goalPanel.setVisible(false);
         menuPanel.setVisible(true);
     }
-
-//    public static void main(String[] args) {
-//        new GUI();
-//    }
+    
 }
