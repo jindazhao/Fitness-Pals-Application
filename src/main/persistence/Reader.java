@@ -1,6 +1,7 @@
 package persistence;
 
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import model.*;
 
 import java.io.File;
@@ -54,7 +55,7 @@ public class Reader {
     private static Goal parseFitnessPlan(List<String> components) {
         Exercise exercise = new Exercise(components.get(2), Double.parseDouble(components.get(3)),
                 Double.parseDouble(components.get(4)));
-        Goal goal = new Goal(components.get(0), components.get(1), exercise);
+        Goal goal = new Goal(components.get(0), components.get(1), exercise, Boolean.parseBoolean(components.get(5)));
         return goal;
     }
 }

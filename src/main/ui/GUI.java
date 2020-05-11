@@ -1,6 +1,7 @@
 package ui;
 
 
+import com.sun.scenario.effect.impl.sw.java.JSWColorAdjustPeer;
 import model.*;
 import persistence.Reader;
 import persistence.Writer;
@@ -26,7 +27,6 @@ import javax.swing.JFrame;
 public class GUI extends JFrame implements ActionListener {
     private JLabel label;
     private JTextField field;
-    private  BoxLayout boxLayout;
     private static final String FITNESSPLANS_File = "./data/fitnessplan.txt";
     private FitnessPlan fitnessPlan;
     private String fitnessPlanName;
@@ -45,18 +45,22 @@ public class GUI extends JFrame implements ActionListener {
     private JTextField text4;
     private JTextField text5;
 
-    private JTextField label1;
+    private JLabel label1;
+    private  JLabel jl;
     private JTextField field2;
+
+    private Double completedGoals;
 
 
     // Constructs a new JFrame with different JPanels and their features
     public GUI() {
         super("Fitness Pals");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setPreferredSize(new Dimension(550, 700));
+        setPreferredSize(new Dimension(550, 750));
         ((JPanel) getContentPane()).setBorder(new EmptyBorder(13, 13, 13, 13));
         menuPanel = new Panel().getViewPanel();
         fitnessPlan = new FitnessPlan();
+        completedGoals = 0.0;
         add(menuPanel);
 
         JButton btn1 = new JButton("View  Your  Fitness  Plan  Goals");
@@ -147,13 +151,36 @@ public class GUI extends JFrame implements ActionListener {
             reader = new Reader();
             fitnessPlan  = reader.readFitnessPlan(new File(FITNESSPLANS_File));
             label.setText("Your Plan Name is: " + fitnessPlan.getFitnessPlanName());
-            label1.setText("Your Fitness Goals: " + fitnessPlan.getGoals());
+            label1.setText(convertToMultiline("Your Fitness Goals:\n" + fitnessPlan.getGoals()));
+            completedGoals = 0.0;
+            for (Goal g : fitnessPlan.returnGoals()) {
+                if (g.getCompleted()) {
+                    completedGoals = completedGoals + 1;
+                }
+            }
+            completedGoals = completedGoals / fitnessPlan.returnGoals().size() * 100.0;
+            if (completedGoals >= 80.0) {
+                jl.setIcon(new ImageIcon("./data/512x512bb.jpg"));
+                jl.setMinimumSize(new Dimension(800, 400));
+            } else if (completedGoals >= 50.0) {
+                jl.setIcon(new ImageIcon("./data/welsh-corgi-puppy-smiling_42750-328.jpg"));
+                jl.setMinimumSize(new Dimension(800,400));
+            } else {
+                jl.setIcon(new ImageIcon("./data/17bb774e2c1b1362fc24abb01c853193_best-sad-dog-illustrations-"
+                        + "royalty-free-vector-graphics-clip-_575-612.jpeg"));
+                jl.setMinimumSize(new Dimension(800,400));
+            }
         } catch (IOException e) {
             fitnessPlan = new FitnessPlan();
+            completedGoals = 0.0;
         } catch (NoNameExecption noNameExecption) {
             label.setText("No Fitness Plan Name Added Yet");
         }
 
+    }
+
+    public static String convertToMultiline(String orig) {
+        return "<html>" + orig.replaceAll("\n", "<br>");
     }
 
 
@@ -220,6 +247,7 @@ public class GUI extends JFrame implements ActionListener {
     // EFFECTS: Sets to true when a goal is complete
     public void doCompleteGoal() {
         fitnessPlan.getGoalThatHasDate(field2.getText()).setDone();
+        label1.setText(convertToMultiline("Your Fitness Goals:\n" + fitnessPlan.getGoals()));
     }
 
     // MODIFIES: this
@@ -239,9 +267,9 @@ public class GUI extends JFrame implements ActionListener {
     public void doAction() {
         Exercise exercise = new Exercise(text3.getText(), Double.parseDouble(text4.getText()),
                 Double.parseDouble(text5.getText()));
-        myGoal = new Goal(text0.getText(), text1.getText(), exercise);
+        myGoal = new Goal(text0.getText(), text1.getText(), exercise, false);
         fitnessPlan.addGoal(myGoal);
-        label1.setText("Your Fitness Goals: " + fitnessPlan.getGoals() + "\n");
+        label1.setText(convertToMultiline("Your Fitness Goals:\n" + fitnessPlan.getGoals()));
 
     }
 
@@ -250,18 +278,17 @@ public class GUI extends JFrame implements ActionListener {
     // menu button
     public void makeViewFitnessPanel() {
         viewPanel = new Panel().getViewPanel();
-
-        JLabel jl = new JLabel();
-        jl.setIcon(new ImageIcon("./data/512x512bb.jpg"));
-        jl.setMinimumSize(new Dimension(800,400));
+        jl = new JLabel();
 
         try {
             label = new JLabel("Your Plan Name is: " + fitnessPlan.getFitnessPlanName());
         } catch (NoNameExecption noNameExecption) {
             label = new JLabel("No Fitness Plan Name Added Yet");
         }
-        label1 = new JTextField("Your Fitness Goals: " + fitnessPlan.getGoals());
+        label1 = new JLabel(convertToMultiline("Your Fitness Goals: " + "\n" + fitnessPlan.getGoals()));
         setFontsOf(label, label1);
+
+        JScrollPane pane = new JScrollPane(label1);
 
         JLabel label2 = new JLabel("Your Fitness Pal: ");
         label2.setFont(new Font("SansSerif", Font.PLAIN, 18));
@@ -269,7 +296,7 @@ public class GUI extends JFrame implements ActionListener {
         menuButton.setActionCommand("Back to Menu");
         menuButton.addActionListener(this);
         viewPanel.add(label);
-        viewPanel.add(label1);
+        viewPanel.add(pane);
         viewPanel.add(label2);
         viewPanel.add(jl);
         viewPanel.add(menuButton);
@@ -277,7 +304,7 @@ public class GUI extends JFrame implements ActionListener {
     }
 
     //EFFECTS: Sets font of the text in ViewPanel
-    public void setFontsOf(JLabel label, JTextField label1) {
+    public void setFontsOf(JLabel label, JLabel label1) {
         label.setFont(new Font("SansSerif", Font.PLAIN, 25));
         label1.setFont(new Font("SansSerif", Font.PLAIN, 18));
 
@@ -294,7 +321,7 @@ public class GUI extends JFrame implements ActionListener {
         btn2.setActionCommand("Update Your Name");
         btn2.addActionListener(this);
         field = new JTextField(5);
-        field.setMaximumSize(new Dimension(500, 25));
+        field.setMaximumSize(new Dimension(1100, 40));
         JLabel label2 = new JLabel(new ImageIcon("./data/516-5169666_kawaii-"
                 + "cute-anime-shiba-dog-puppy-kawaii-cute.png"));
         label2.setMinimumSize(new Dimension(21, 2));
@@ -386,10 +413,14 @@ public class GUI extends JFrame implements ActionListener {
         JButton btnr = new JButton("Check off as Complete!");
         btnr.setActionCommand("Check off as Complete!");
         btnr.addActionListener(this);
-        JLabel label = new JLabel("Please enter the date in dd/mm/yyyy of the goal you would like ot check off: ");
+        JLabel label = new JLabel("Please enter the date in dd/mm/yyyy of the goal you would like to check off: ");
         field2 = new JTextField(5);
+        field2.setMaximumSize(new Dimension(1100, 45));
+        JLabel label2 = new JLabel(new ImageIcon("data/kisspng-pembroke-welsh-corgi-"
+                + "cardigan-welsh-corgi-puppy-cl-5ba2b1dee59e99.7875996515373890229405.jpg"));
         removePanel.add(label);
         removePanel.add(field2);
+        removePanel.add(label2);
         removePanel.add(btnr);
         removePanel.add(menuButton);
     }

@@ -28,4 +28,6 @@ public class Exercise {
     public double getExerciseTime() {
         return exerciseTime;
     }
+
+
 }

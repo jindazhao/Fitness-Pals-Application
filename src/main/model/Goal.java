@@ -8,18 +8,18 @@ import java.util.ArrayList;
 // EFFECTS: Represents a goal having a description, a list of exercises wanting to do, number of calories want to burn,
 //           a list of foods to consume, a list of nutrients want to consume, and the amount of sleep want the night
 //           before
-public class Goal extends Corgi {
+public class Goal {
     private String description;
     private String date; // has to be in the form dd/mm/yyyy
     private Exercise exercise;
     private Boolean completed;
 
     // EFFECTS: constructs a goal with a description, due date, and exercise
-    public Goal(String description, String date, Exercise exercise) {
+    public Goal(String description, String date, Exercise exercise, Boolean completed) {
         this.description = description;
         this.date = date;
         this.exercise = exercise;
-        this.completed = false;
+        this.completed = completed;
 
     }
 
@@ -55,7 +55,6 @@ public class Goal extends Corgi {
 
     public void setDone() {
         completed = true;
-        setHappiness(happiness + 1);
     }
 
 

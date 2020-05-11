@@ -107,6 +107,7 @@ public class FitnessPalsApp {
     }
 
 
+
     // EFFECTS: allows user to view current fitness plan
     private void viewFitnessPlan() {
 
@@ -176,7 +177,7 @@ public class FitnessPalsApp {
 
         System.out.println("Goal is due by: " + " " + goaldate);
 
-        myGoal = new Goal(goalname, goaldate, addExercises());
+        myGoal = new Goal(goalname, goaldate, addExercises(), false);
 
         return myGoal;
     }

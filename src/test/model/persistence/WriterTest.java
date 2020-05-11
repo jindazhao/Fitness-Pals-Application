@@ -31,9 +31,9 @@ public class WriterTest {
         testWriter = new Writer(new File(TEST_FILE));
         fitnessPlan = new FitnessPlan();
         exercise = new Exercise("Running", 100, 100);
-        goal = new Goal("Lose Weight", "00/00/0000", exercise);
+        goal = new Goal("Lose Weight", "00/00/0000", exercise, false);
         exercise = new Exercise("Planks", 100, 100);
-        goal2 = new Goal("Lose More Weight", "00/00/0000", exercise);
+        goal2 = new Goal("Lose More Weight", "00/00/0000", exercise, false);
     }
 
     @Test

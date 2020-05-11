@@ -4,8 +4,8 @@
 
 This is a desktop application that will enhance motivation and become fit at the same time. The application allows the
 to choose a fitness plan and alter the given plan based on the user's experience, needs, and goals. Everyday, there will
-be a given goal for exercise, sleep, and nutrition. Every goal that is met each day, there is a feature that is added to
-your pet's house, hence the name "Pals". In order to keep your pet happy and healthy, the goals must be met. 
+be a given goal for exercise. Every goal that is met each day, your pet will be happier, hence the name "Pals". 
+In order to keep your pet happy and healthy, the goals must be met. 
 This way, people can be stay fit and be motivated while also being able to track their progress in a fun and motivating
 way.  
 
@@ -34,9 +34,10 @@ These plans will be based on three aspects that will make up daily goals:
 
 ## Pals
 
-How the pets aspect works is that once a goal is hit, there will be an added feature to the the user's pet's house.
-Every goal that is not hit will not take away any features, but over time, the more goals not met, the sadder the pets
-will become.
+How the pets aspect works is that once a goal is hit, the pet's happiness will increase. This measurmenrt is computed 
+based on how many goals have been met as a percentage of how many total goals there are. If the percentage is over 50 
+then the pet will be content and over 80 will be happy. Anything below 50 will result in a sad pet
+
 
 **Hitting goals but not actually doing it will keep the pets happy, but the user will be cheating themselves**
 

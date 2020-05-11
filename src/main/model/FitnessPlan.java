@@ -4,6 +4,7 @@ import persistence.Saveable;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 // Represents a fitness plan with a description and a list of goals
 public class FitnessPlan implements Saveable {
@@ -36,6 +37,10 @@ public class FitnessPlan implements Saveable {
         fitnessPlanName = newname;
     }
 
+    public List<Goal> returnGoals() {
+        return fitnessPlanGoals;
+    }
+
     // EFFECTS: returns the list of goal names
     public String getGoals() {
         String mygoal = "";
@@ -43,8 +48,9 @@ public class FitnessPlan implements Saveable {
             int placement = fitnessPlanGoals.indexOf(in);
             Goal mygoalname = fitnessPlanGoals.get(placement);
             mygoal = mygoal + mygoalname.getDescription() + ":" + " " + mygoalname.getDate()
-                    + " " + mygoalname.getGoalExerciseName()
-                    + " " + mygoalname.getExerciseCalories() + " " + mygoalname.getExerciseDuration() + "\n";
+                    + " " + mygoalname.getGoalExerciseName() + " " + mygoalname.getExerciseCalories() + " "
+                    + mygoalname.getExerciseDuration() + " "
+                    + mygoalname.getCompleted() + "\n";
             placement++;
         }
         return mygoal;
@@ -71,10 +77,8 @@ public class FitnessPlan implements Saveable {
     public Goal getGoalThatHasDate(String date) {
         Goal mygoal = null;
         for (Goal in : fitnessPlanGoals) {
-            int placement = fitnessPlanGoals.indexOf(in);
-            mygoal = fitnessPlanGoals.get(placement);
-            if (mygoal.getDate() == date) {
-                return mygoal;
+            if (in.getDate().equals(date)) {
+                return in;
             }
         }
         return mygoal;
@@ -97,6 +101,8 @@ public class FitnessPlan implements Saveable {
             printWriter.print(i.getExerciseCalories());
             printWriter.print(";");
             printWriter.print(i.getExerciseDuration());
+            printWriter.print(";");
+            printWriter.print(i.getCompleted());
             printWriter.print("\n");
         }
     }

@@ -20,8 +20,8 @@ class FitnessPlanTest {
         crunches = new Exercise("Crunches", 100, 10);
         planks = new Exercise("Planks", 100, 10);
 
-        myfirstgoal = new Goal("Lose Weight", "01/01/2020", crunches);
-        mysecondgoal = new Goal("Lose More Weight and Get More Sleep", "01/02/2020", planks);
+        myfirstgoal = new Goal("Lose Weight", "01/01/2020", crunches, false);
+        mysecondgoal = new Goal("Lose More Weight and Get More Sleep", "01/02/2020", planks, false);
     }
 
     @Test
